@@ -7,9 +7,9 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 
 function eingabeFeld(): void {
-    let eingabe: string = prompt("Hey! Wie heißt du?", "");
+    let eingabe: string = prompt("Hey! Wie heisst du?", "");
     if (eingabe != null) {
         document.getElementById("text").innerHTML =
-            "Hallo " + eingabe + "! Schön, dass du da bist :)";
+            "Hallo " + eingabe + "! Schoen, dass du da bist :)";
     }
 }

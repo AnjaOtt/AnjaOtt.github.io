@@ -6,10 +6,10 @@ Datum: 11.10.17
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
 function eingabeFeld() {
-    let eingabe = prompt("Hey! Wie hei�t du?", "");
+    let eingabe = prompt("Hey! Wie heisst du?", "");
     if (eingabe != null) {
         document.getElementById("text").innerHTML =
-            "Hallo " + eingabe + "! Sch�n, dass du da bist :)";
+            "Hallo " + eingabe + "! Schoen, dass du da bist :)";
     }
 }
 //# sourceMappingURL=miniseite.js.map
