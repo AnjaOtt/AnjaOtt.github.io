@@ -186,20 +186,24 @@ namespace A02 {
         crc2.stroke();
         crc2.fillStyle = "#549222";
         crc2.fill();
-
+        
+    //plazierte Bäume
         drawTree(670, 450, "#315A10");
         drawTree(550, 500, "#315A10");
 
+    //Schleife für zufällige Bäume
+        
         for (let i: number = 0; i < 10; i++) {
             let x: number = 500 + Math.random() * 200;
             let y: number = 350 + Math.random() * 200;
             drawTree(x, y, "#549222");
         }
-    }
     
+    
+    //Funktion zeichne Baum
+       
     function drawTree(_x: number, _y: number, _color: string): void {
-        //Bäume
-        
+       
         crc2.beginPath();
         crc2.moveTo(_x, _y + 20);
         crc2.lineTo(_x - 30, _y + 50);
@@ -217,8 +221,24 @@ namespace A02 {
         crc2.stroke();
         crc2.fillStyle = _color;
         crc2.fill();
-        
-        
-
+               
     }
+    
+    // Funktion zeichne Schnee
+    function drawSnow(_x:number, _y:number, _color: string):void{
+        crc2.beginPath();
+        crc2.arc(_x,_y, 2, 0, 2*Math.PI);
+        crc2.fillStyle= _color;
+        crc2.fill();
+    }
+    
+    //Schleife für zufällige Schneeflocken
+    for(let i: number=0; i<2000;i++){
+        let x: number= Math.random()*800;
+        let y: number= Math.random()*600;
+        drawSnow(x, y, "#FFFFFF");
+        }
+    
+   } 
+    
 }

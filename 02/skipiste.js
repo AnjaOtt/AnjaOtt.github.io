@@ -164,32 +164,47 @@ var A02;
         crc2.stroke();
         crc2.fillStyle = "#549222";
         crc2.fill();
+        //plazierte B�ume
         drawTree(670, 450, "#315A10");
         drawTree(550, 500, "#315A10");
+        //Schleife f�r zuf�llige B�ume
         for (let i = 0; i < 10; i++) {
             let x = 500 + Math.random() * 200;
             let y = 350 + Math.random() * 200;
             drawTree(x, y, "#549222");
         }
-    }
-    function drawTree(_x, _y, _color) {
-        //B�ume
-        crc2.beginPath();
-        crc2.moveTo(_x, _y + 20);
-        crc2.lineTo(_x - 30, _y + 50);
-        crc2.lineTo(_x + 30, _y + 50);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fillStyle = _color;
-        crc2.fill();
-        crc2.beginPath();
-        crc2.moveTo(_x, _y);
-        crc2.lineTo(_x - 30, _y + 30);
-        crc2.lineTo(_x + 30, _y + 30);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fillStyle = _color;
-        crc2.fill();
+        //Funktion zeichne Baum
+        function drawTree(_x, _y, _color) {
+            crc2.beginPath();
+            crc2.moveTo(_x, _y + 20);
+            crc2.lineTo(_x - 30, _y + 50);
+            crc2.lineTo(_x + 30, _y + 50);
+            crc2.closePath();
+            crc2.stroke();
+            crc2.fillStyle = _color;
+            crc2.fill();
+            crc2.beginPath();
+            crc2.moveTo(_x, _y);
+            crc2.lineTo(_x - 30, _y + 30);
+            crc2.lineTo(_x + 30, _y + 30);
+            crc2.closePath();
+            crc2.stroke();
+            crc2.fillStyle = _color;
+            crc2.fill();
+        }
+        // Funktion zeichne Schnee
+        function drawSnow(_x, _y, _color) {
+            crc2.beginPath();
+            crc2.arc(_x, _y, 2, 0, 2 * Math.PI);
+            crc2.fillStyle = _color;
+            crc2.fill();
+        }
+        //Schleife f�r zuf�llige Schneeflocken
+        for (let i = 0; i < 2000; i++) {
+            let x = Math.random() * 800;
+            let y = Math.random() * 600;
+            drawSnow(x, y, "#FFFFFF");
+        }
     }
 })(A02 || (A02 = {}));
 //# sourceMappingURL=skipiste.js.map
