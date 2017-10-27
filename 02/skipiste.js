@@ -114,56 +114,6 @@ var A02;
         crc2.lineTo(250, 600);
         crc2.closePath();
         crc2.stroke();
-        //Baum1    
-        crc2.beginPath();
-        crc2.moveTo(760, 260);
-        crc2.lineTo(730, 290);
-        crc2.lineTo(790, 290);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fillStyle = "#315A10";
-        crc2.fill();
-        crc2.beginPath();
-        crc2.moveTo(760, 240);
-        crc2.lineTo(730, 270);
-        crc2.lineTo(790, 270);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fillStyle = "#315A10";
-        crc2.fill();
-        crc2.beginPath();
-        crc2.moveTo(760, 220);
-        crc2.lineTo(730, 250);
-        crc2.lineTo(790, 250);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fillStyle = "#315A10";
-        crc2.fill();
-        //Baum2
-        crc2.beginPath();
-        crc2.moveTo(670, 340);
-        crc2.lineTo(640, 370);
-        crc2.lineTo(700, 370);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fillStyle = "#549222";
-        crc2.fill();
-        crc2.beginPath();
-        crc2.moveTo(670, 320);
-        crc2.lineTo(640, 350);
-        crc2.lineTo(700, 350);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fillStyle = "#549222";
-        crc2.fill();
-        crc2.beginPath();
-        crc2.moveTo(670, 300);
-        crc2.lineTo(640, 330);
-        crc2.lineTo(700, 330);
-        crc2.closePath();
-        crc2.stroke();
-        crc2.fillStyle = "#549222";
-        crc2.fill();
         //plazierte B�ume
         drawTree(670, 450, "#315A10");
         drawTree(550, 500, "#315A10");
@@ -173,38 +123,38 @@ var A02;
             let y = 350 + Math.random() * 200;
             drawTree(x, y, "#549222");
         }
-        //Funktion zeichne Baum
-        function drawTree(_x, _y, _color) {
-            crc2.beginPath();
-            crc2.moveTo(_x, _y + 20);
-            crc2.lineTo(_x - 30, _y + 50);
-            crc2.lineTo(_x + 30, _y + 50);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.fillStyle = _color;
-            crc2.fill();
-            crc2.beginPath();
-            crc2.moveTo(_x, _y);
-            crc2.lineTo(_x - 30, _y + 30);
-            crc2.lineTo(_x + 30, _y + 30);
-            crc2.closePath();
-            crc2.stroke();
-            crc2.fillStyle = _color;
-            crc2.fill();
-        }
-        // Funktion zeichne Schnee
-        function drawSnow(_x, _y, _color) {
-            crc2.beginPath();
-            crc2.arc(_x, _y, 2, 0, 2 * Math.PI);
-            crc2.fillStyle = _color;
-            crc2.fill();
-        }
         //Schleife f�r zuf�llige Schneeflocken
         for (let i = 0; i < 2000; i++) {
             let x = Math.random() * 800;
             let y = Math.random() * 600;
             drawSnow(x, y, "#FFFFFF");
         }
+    }
+    //Funktion zeichne Baum
+    function drawTree(_x, _y, _color) {
+        crc2.beginPath();
+        crc2.moveTo(_x, _y + 20);
+        crc2.lineTo(_x - 30, _y + 50);
+        crc2.lineTo(_x + 30, _y + 50);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fillStyle = _color;
+        crc2.fill();
+        crc2.beginPath();
+        crc2.moveTo(_x, _y);
+        crc2.lineTo(_x - 30, _y + 30);
+        crc2.lineTo(_x + 30, _y + 30);
+        crc2.closePath();
+        crc2.stroke();
+        crc2.fillStyle = _color;
+        crc2.fill();
+    }
+    // Funktion zeichne Schnee
+    function drawSnow(_x, _y, _color) {
+        crc2.beginPath();
+        crc2.arc(_x, _y, 2, 0, 2 * Math.PI);
+        crc2.fillStyle = _color;
+        crc2.fill();
     }
 })(A02 || (A02 = {}));
 //# sourceMappingURL=skipiste.js.map
