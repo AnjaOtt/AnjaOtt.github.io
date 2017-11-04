@@ -9,6 +9,13 @@ var A02;
 (function (A02) {
     window.addEventListener("load", init);
     let crc2;
+    let snowX = [];
+    let snowY = [];
+    let cloudX = [];
+    let cloudY = [];
+    let driverX = [];
+    let driverY = [];
+    let imgData;
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         console.log(canvas);
@@ -29,21 +36,6 @@ var A02;
         crc2.fillStyle = "#EED531";
         crc2.fill();
         //Wolke    
-        crc2.beginPath();
-        crc2.arc(103, 70, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(150, 70, 22, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(131, 45, 25, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-        crc2.arc(130, 70, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
         //Berge
         crc2.beginPath();
         crc2.moveTo(0, 260);
@@ -123,12 +115,25 @@ var A02;
             let y = 350 + Math.random() * 200;
             drawTree(x, y, "#549222");
         }
-        //Schleife f�r zuf�llige Schneeflocken
+        //Schleife f�r Schnee
         for (let i = 0; i < 2000; i++) {
-            let x = Math.random() * 800;
-            let y = Math.random() * 600;
-            drawSnow(x, y, "#FFFFFF");
+            snowX[i] = 0 + Math.random() * 800;
+            snowY[i] = 0 + Math.random() * 600;
         }
+        //Schleife f�r Wolke
+        for (let i = 0; i < 1; i++) {
+            snowX[i] = 0 + Math.random() * 800;
+            snowY[i] = 0 + Math.random() * 100;
+        }
+        //Schleife f�r Skifahrer
+        for (let i = 0; i < 1; i++) {
+            driverX[i] = 800;
+            driverY[i] = 50;
+        }
+        //Hintergrund speichern
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
+        //Funktionsaufruf
+        animate();
     }
     //Funktion zeichne Baum
     function drawTree(_x, _y, _color) {
@@ -150,11 +155,76 @@ var A02;
         crc2.fill();
     }
     // Funktion zeichne Schnee
-    function drawSnow(_x, _y, _color) {
+    function drawSnow(_x, _y) {
         crc2.beginPath();
         crc2.arc(_x, _y, 2, 0, 2 * Math.PI);
-        crc2.fillStyle = _color;
+        crc2.fillStyle = "#ffffff";
         crc2.fill();
+    }
+    //Funktion zeichne Wolken
+    function drawCloud(_x, _y) {
+        crc2.beginPath();
+        crc2.arc(_x, _y, 20, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
+        crc2.beginPath();
+        crc2.arc(_x + 40, _y, 22, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
+        crc2.beginPath();
+        crc2.arc(_x + 20, _y, 25, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
+        crc2.arc(_x, _y - 20, 20, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ffffff";
+        crc2.fill();
+    }
+    //Funktion zeichne Skifahrer
+    function drawDriver(_x, _y) {
+        crc2.fillStyle = "#000000";
+        crc2.fillRect(_x, _y, 10, -23);
+        crc2.fillStyle = "#000000";
+        crc2.beginPath();
+        crc2.arc(_x + 5, _y - 23, 7, 0, 2 * Math.PI);
+        crc2.fill();
+        crc2.stroke();
+        crc2.fillStyle = "#000000";
+        crc2.beginPath();
+        crc2.moveTo(_x + 20, _y - 4);
+        crc2.lineTo(_x - 20, _y + 4);
+        crc2.stroke();
+    }
+    //Funktion zum Animieren
+    function animate() {
+        console.log("Timeout");
+        crc2.putImageData(imgData, 0, 0);
+        //Schneeflocken
+        for (let i = 0; i < snowX.length; i++) {
+            if (snowY[i] > 600) {
+                snowY[i] = 0;
+            }
+            snowY[i] += Math.random();
+            drawSnow(snowX[i], snowY[i]);
+        }
+        //Wolke
+        for (let i = 0; i < cloudX.length; i++) {
+            if (cloudX[i] > 800) {
+                cloudX[i] = 0;
+            }
+            cloudX[i] += 0.4;
+            drawCloud(cloudX[i], cloudY[i]);
+        }
+        //Skifahrer
+        for (let i = 0; i < driverX.length; i++) {
+            if (driverX[i] < 0 || driverY[i] > 600) {
+                driverX[i] = 800;
+                driverY[i] = 50;
+            }
+            driverX[i] -= 3;
+            driverY[i] += 2;
+            drawDriver(driverX[i], driverY[i]);
+        }
+        window.setTimeout(animate, 20); //alle 20 ms f�hrt sich die Funktion neu aus
     }
 })(A02 || (A02 = {}));
 //# sourceMappingURL=skipiste.js.map

@@ -147,10 +147,16 @@ namespace A02 {
             snowY[i] = 0 + Math.random() * 600;
         }
         
+        //Schleife für Wolke
+        for (let i: number = 0; i < 1; i++) {
+            snowX[i] = 0 + Math.random() * 800;
+            snowY[i] = 0 + Math.random() * 100;
+        }
+        
         //Schleife für Skifahrer
         for (let i: number = 0; i < 1; i++) {
-            driverX[i] = 0;
-            driverY[i] = 150;
+            driverX[i] = 800;
+            driverY[i] = 50;
         }
 
 
@@ -158,7 +164,7 @@ namespace A02 {
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         //Funktionsaufruf
-        animate();
+          animate();
     }
 
     //Funktion zeichne Baum
@@ -186,50 +192,52 @@ namespace A02 {
     }
 
     // Funktion zeichne Schnee
-    function drawSnow(_x: number, _y: number, _color: string): void {
+    function drawSnow(_x: number, _y: number): void {
         crc2.beginPath();
         crc2.arc(_x, _y, 2, 0, 2 * Math.PI);
-        crc2.fillStyle = _color;
+        crc2.fillStyle = "#ffffff";
         crc2.fill();
     }
 
     //Funktion zeichne Wolken
     function drawCloud(_x: number, _y: number): void {
         crc2.beginPath();
-        crc2.arc(103, 70, 20, 0, 2 * Math.PI);
+        crc2.arc(_x,_y, 20, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
         crc2.beginPath();
-        crc2.arc(150, 70, 22, 0, 2 * Math.PI);
+        crc2.arc(_x+40, _y, 22, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
         crc2.beginPath();
-        crc2.arc(131, 45, 25, 0, 2 * Math.PI);
+        crc2.arc(_x+20, _y, 25, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
-        crc2.arc(130, 70, 20, 0, 2 * Math.PI);
+        crc2.arc(_x, _y-20, 20, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
     }
     
     //Funktion zeichne Skifahrer
     function drawDriver(_x: number, _y: number): void {
+       crc2.fillStyle = "#000000";
+        crc2.fillRect(_x, _y, 10, - 23);
         crc2.fillStyle = "#000000";
-        crc2.fillRect(_x, _y, 5, -20);
         crc2.beginPath();
-        crc2.arc(_x + 2.5, _y - 20, 7, 0, 2 * Math.PI);
+        crc2.arc(_x + 5, _y - 23, 7, 0, 2 * Math.PI);
         crc2.fill();
+        crc2.stroke();
+        crc2.fillStyle = "#000000";
         crc2.beginPath();
-        crc2.moveTo(_x - 4, _y - 4);
-        crc2.lineTo(_x + 13, _y + 7);
-        crc2.strokeStyle = "#000000";
+        crc2.moveTo(_x + 20, _y - 4);
+        crc2.lineTo(_x - 20, _y + 4);
         crc2.stroke();
 
 
     }
     
     //Funktion zum Animieren
-    function animate(): void {
+        function animate(): void {
         console.log("Timeout");
         crc2.putImageData(imgData, 0, 0);
 
@@ -247,18 +255,18 @@ namespace A02 {
             if (cloudX[i] > 800) {
                 cloudX[i] = 0;
             }
-            cloudX[i] += Math.random();
+            cloudX[i] += 0.4;
             drawCloud(cloudX[i], cloudY[i]);
         }
 
         //Skifahrer
         for (let i: number = 0; i < driverX.length; i++) {
-            if (driverX[i] > 800) {
-                driverX[i] = 0;
-                driverY[i] = 150;
+           if (driverX[i] < 0 || driverY[i] > 600) {
+                driverX[i] = 800;
+                driverY[i] = 50;
             }
-            driverY[i] += 3;
-            driverX[i] += 5;
+            driverX[i] -= 3;
+            driverY[i] += 2;
             drawDriver(driverX[i], driverY[i]);
         }
         window.setTimeout(animate, 20); //alle 20 ms führt sich die Funktion neu aus
