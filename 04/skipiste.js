@@ -137,7 +137,7 @@ var A04;
                 y: 150,
                 dx: Math.random() * 1 - 1.5,
                 dy: Math.random() * 1 - 1.5,
-                color: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+                color: "hsl(" + Math.random() * 360 + ", 100%, 60%)"
             };
         }
         //Hintergrund speichern
@@ -210,13 +210,10 @@ var A04;
         _driver.y += _driver.dy + 2;
         crc2.fillStyle = _driver.color;
         crc2.fillRect(_driver.x, _driver.y, 10, -23);
-        crc2.fill();
-        crc2.fillStyle = _driver.color;
         crc2.beginPath();
         crc2.arc(_driver.x + 5, _driver.y - 23, 7, 0, 2 * Math.PI);
+        crc2.fillStyle = _driver.color;
         crc2.fill();
-        crc2.stroke();
-        crc2.fillStyle = "#000000";
         crc2.beginPath();
         crc2.moveTo(_driver.x + 20, _driver.y - 4);
         crc2.lineTo(_driver.x - 20, _driver.y + 4);

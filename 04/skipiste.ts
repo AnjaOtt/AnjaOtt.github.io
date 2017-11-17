@@ -20,7 +20,7 @@ namespace A04 {
         dy: number;
         color: string;
     }
-    
+
     let snowX: number[] = [];
     let snowY: number[] = [];
     let cloudX: number[] = [];
@@ -151,8 +151,8 @@ namespace A04 {
             let y: number = 350 + Math.random() * 200;
             drawTree(x, y, "#549222");
         }
-        
-      
+
+
 
         //Schleife für Schnee
         for (let i: number = 0; i < 2000; i++) {
@@ -180,11 +180,11 @@ namespace A04 {
                 y: 150,
                 dx: Math.random() * 1 - 1.5,
                 dy: Math.random() * 1 - 1.5,
-                color: "hsl(" + Math.random() * 360 + ", 100%, 50%)"
+                color: "hsl(" + Math.random() * 360 + ", 100%, 60%)"
             };
-            
+
         }
-        
+
         //Hintergrund speichern
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
@@ -222,6 +222,7 @@ namespace A04 {
         crc2.arc(_x, _y, 2, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
+        
     }
 
     //Funktion zeichne Wolken
@@ -241,6 +242,7 @@ namespace A04 {
         crc2.arc(_x, _y - 20, 20, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
+        
     }
 
     /*Funktion zeichne Skifahrer
@@ -261,21 +263,19 @@ namespace A04 {
 
     //Funktion Skifahrer Aufgabe 4
     function drawSkier(_driver: SkierInfo): void {  // Parameter für die Funktion drawSkier aus dem Interface SkierInfo entnehmen
-        
-        _driver.x += _driver.dx -0.5;
-            _driver.y += _driver.dy +2;
-        
+
+        _driver.x += _driver.dx - 0.5;
+        _driver.y += _driver.dy + 2;
+
         crc2.fillStyle = _driver.color;
         crc2.fillRect(_driver.x, _driver.y, 10, - 23);
-        crc2.fill();
-        
-        crc2.fillStyle = _driver.color;
+
         crc2.beginPath();
         crc2.arc(_driver.x + 5, _driver.y - 23, 7, 0, 2 * Math.PI);
+        crc2.fillStyle = _driver.color;
         crc2.fill();
-        crc2.stroke();
+        
 
-        crc2.fillStyle = "#000000";
         crc2.beginPath();
         crc2.moveTo(_driver.x + 20, _driver.y - 4);
         crc2.lineTo(_driver.x - 20, _driver.y + 4);
@@ -313,13 +313,13 @@ namespace A04 {
                 driver[i].x = 800;
                 driver[i].y = 50;
             }
-        
-        drawSkier(driver[i]);  //Funktionsaufruf aus dem Interface SkiInfo
+
+            drawSkier(driver[i]);  //Funktionsaufruf aus dem Interface SkiInfo
+        }
+        window.setTimeout(animate, 20); //alle 20 ms führt sich die Funktion neu aus
     }
-    window.setTimeout(animate, 20); //alle 20 ms führt sich die Funktion neu aus
 }
-}
-    
+
 
 
 
