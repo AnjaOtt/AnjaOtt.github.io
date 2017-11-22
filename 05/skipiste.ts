@@ -1,28 +1,27 @@
 /*
-Aufgabe: 3
+Aufgabe: 5
 Name: Anja Ott
 Matrikel: 256342
-Datum: 04.11.17
+Datum: 17.11.17
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
 
-namespace A02 {
+namespace A05 {
 
     window.addEventListener("load", init);
-    let crc2: CanvasRenderingContext2D;
-    
-    let snowX: number[] = [];
-    let snowY: number[] = [];
-    let cloudX: number[] = [];
-    let cloudY: number[] = [];
-    let driverX: number[] = [];
-    let driverY: number[] = [];
+    export let crc2: CanvasRenderingContext2D;
+
+
+    let cloud: Cloud[] = [];
+    let snowflake: Snowflake[] = [];
+    let skier: Skier[] = [];
 
     let imgData: ImageData;
 
+
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
-        console.log(canvas);
+        console.log("start init");
 
         crc2 = canvas.getContext("2d");
         console.log(crc2);
@@ -141,30 +140,37 @@ namespace A02 {
             drawTree(x, y, "#549222");
         }
 
-        //Schleife für Schnee
+
+
+        //Skifahrer
+        for (let i: number = 0; i < 7; i++) {
+            skier[i] = new Skier(Math.random() * 500 + 750,
+                Math.random() * 200 - 25,
+                Math.random() * 1.5 - 3.5,
+                Math.random() * 1 + 1,
+                "hsl(" + Math.random() * 360 + ", 100%, 50%)");
+            console.log("for-Schleife Skifahrer init");
+        }
+        
+        //Schneeflocken
         for (let i: number = 0; i < 2000; i++) {
-            snowX[i] = 0 + Math.random() * 800;
-            snowY[i] = 0 + Math.random() * 600;
+            snowflake[i] = new Snowflake(Math.random()*800, Math.random()*600);
+            console.log("for-Schleife Snowflake init");
         }
         
-        //Schleife für Wolke
-        for (let i: number = 0; i < 1; i++) {
-            snowX[i] = 0 + Math.random() * 800;
-            snowY[i] = 50;
+        //Wolken
+        for (let i: number = 0; i < 3; i++) {
+            cloud[i] = new Cloud(Math.random()*800,Math.random() * 30 + 40);
+            console.log("for-Schleife Cloud init");
         }
-        
-        //Schleife für Skifahrer
-        for (let i: number = 0; i < 1; i++) {
-            driverX[i] = 800;
-            driverY[i] = 50;
-        }
+
 
 
         //Hintergrund speichern
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         //Funktionsaufruf
-          animate();
+        animate();
     }
 
     //Funktion zeichne Baum
@@ -191,89 +197,36 @@ namespace A02 {
 
     }
 
-    // Funktion zeichne Schnee
-    function drawSnow(_x: number, _y: number): void {
-        crc2.beginPath();
-        crc2.arc(_x, _y, 2, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-    }
 
-    //Funktion zeichne Wolken
-    function drawCloud(_x: number, _y: number): void {
-        crc2.beginPath();
-        crc2.arc(_x,_y, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(_x+40, _y, 22, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(_x+20, _y, 25, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-        crc2.beginPath();
-        crc2.arc(_x, _y-20, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ffffff";
-        crc2.fill();
-    }
-    
-    //Funktion zeichne Skifahrer
-    function drawDriver(_x: number, _y: number): void {
-       crc2.fillStyle = "#000000";
-        crc2.fillRect(_x, _y, 10, - 23);
-        crc2.fillStyle = "#000000";
-        crc2.beginPath();
-        crc2.arc(_x + 5, _y - 23, 7, 0, 2 * Math.PI);
-        crc2.fill();
-        crc2.stroke();
-        crc2.fillStyle = "#000000";
-        crc2.beginPath();
-        crc2.moveTo(_x + 20, _y - 4);
-        crc2.lineTo(_x - 20, _y + 4);
-        crc2.stroke();
-
-
-    }
-    
     //Funktion zum Animieren
-        function animate(): void {
+    function animate(): void {
         console.log("Timeout");
         crc2.putImageData(imgData, 0, 0);
 
-        //Schneeflocken
-        for (let i: number = 0; i < snowX.length; i++) {
-            if (snowY[i] > 600) {
-                snowY[i] = 0;
-            }
-            snowY[i] += Math.random();
-            drawSnow(snowX[i], snowY[i]);
-        }
-
-        //Wolke
-        for (let i: number = 0; i < cloudX.length; i++) {
-            if (cloudX[i] > 800) {
-                cloudX[i] = 0;
-            }
-            cloudX[i] += 0.4;
-            drawCloud(cloudX[i], cloudY[i]);
-        }
-
         //Skifahrer
-        for (let i: number = 0; i < driverX.length; i++) {
-           if (driverX[i] < 0 || driverY[i] > 600) {
-                driverX[i] = 800;
-                driverY[i] = 50;
-            }
-            driverX[i] -= 3;
-            driverY[i] += 2;
-            drawDriver(driverX[i], driverY[i]);
+        for (let i: number = 0; i < skier.length; i++) {
+            skier[i].update();
         }
+
+        //Schneeflocken
+            for (let i: number = 0; i < snowflake.length; i++) {
+                snowflake[i].update();
+            }
+
+            
+            
+            //Wolken ziehen lassen
+            for (let i: number = 0; i < cloud.length; i++) {
+                cloud[i].update();
+                    
+                }
+                
+
+
         window.setTimeout(animate, 20); //alle 20 ms führt sich die Funktion neu aus
     }
-
 }
+
 
 
 

@@ -123,7 +123,7 @@ var A02;
         //Schleife f�r Wolke
         for (let i = 0; i < 1; i++) {
             snowX[i] = 0 + Math.random() * 800;
-            snowY[i] = 0 + Math.random() * 100;
+            snowY[i] = 50;
         }
         //Schleife f�r Skifahrer
         for (let i = 0; i < 1; i++) {
@@ -175,6 +175,7 @@ var A02;
         crc2.arc(_x + 20, _y, 25, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
+        crc2.beginPath();
         crc2.arc(_x, _y - 20, 20, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
