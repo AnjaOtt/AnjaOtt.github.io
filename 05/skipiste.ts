@@ -8,17 +8,17 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 namespace A05 {
 
-    window.addEventListener("load", init);
+    window.addEventListener("load", init); //Wenn Seite vollständig geladen, beginnt die Funktion
     export let crc2: CanvasRenderingContext2D;
 
-
+    //Variablen der Klassen
     let cloud: Cloud[] = [];
     let snowflake: Snowflake[] = [];
     let skier: Skier[] = [];
 
     let imgData: ImageData;
 
-
+    //Funktion für Canvas
     function init(): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         console.log("start init");
@@ -127,12 +127,12 @@ namespace A05 {
 
 
 
-        //plazierte Bäume
+        //an bestimmte Positionen gezeichnete Bäume
         drawTree(670, 450, "#315A10");
         drawTree(550, 500, "#315A10");
 
 
-        //Schleife für zufällige Bäume
+        //Schleife für zufällige Bäume, wieviel und in welchem Bereich festgelegt
 
         for (let i: number = 0; i < 10; i++) {
             let x: number = 500 + Math.random() * 200;
@@ -142,7 +142,7 @@ namespace A05 {
 
 
 
-        //Skifahrer
+        //Schleife für Skifahrer
         for (let i: number = 0; i < 7; i++) {
             skier[i] = new Skier(Math.random() * 500 + 750,
                 Math.random() * 200 - 25,
@@ -151,16 +151,16 @@ namespace A05 {
                 "hsl(" + Math.random() * 360 + ", 100%, 50%)");
             console.log("for-Schleife Skifahrer init");
         }
-        
-        //Schneeflocken
+
+        //Schleife für Schneeflocken
         for (let i: number = 0; i < 2000; i++) {
-            snowflake[i] = new Snowflake(Math.random()*800, Math.random()*600);
+            snowflake[i] = new Snowflake(Math.random() * 800, Math.random() * 600);
             console.log("for-Schleife Snowflake init");
         }
-        
-        //Wolken
+
+        //Schleife für Wolken
         for (let i: number = 0; i < 3; i++) {
-            cloud[i] = new Cloud(Math.random()*800,Math.random() * 30 + 40);
+            cloud[i] = new Cloud(Math.random() * 800, Math.random() * 30 + 40);
             console.log("for-Schleife Cloud init");
         }
 
@@ -203,24 +203,24 @@ namespace A05 {
         console.log("Timeout");
         crc2.putImageData(imgData, 0, 0);
 
-        //Skifahrer
+        //Skifahrer fahren lassen
         for (let i: number = 0; i < skier.length; i++) {
             skier[i].update();
         }
 
-        //Schneeflocken
-            for (let i: number = 0; i < snowflake.length; i++) {
-                snowflake[i].update();
-            }
+        //Schneeflocken fallen lassen
+        for (let i: number = 0; i < snowflake.length; i++) {
+            snowflake[i].update();
+        }
 
-            
-            
-            //Wolken ziehen lassen
-            for (let i: number = 0; i < cloud.length; i++) {
-                cloud[i].update();
-                    
-                }
-                
+
+
+        //Wolken ziehen lassen
+        for (let i: number = 0; i < cloud.length; i++) {
+            cloud[i].update();
+
+        }
+
 
 
         window.setTimeout(animate, 20); //alle 20 ms führt sich die Funktion neu aus
