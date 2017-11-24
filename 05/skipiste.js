@@ -7,11 +7,13 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 var A05;
 (function (A05) {
-    window.addEventListener("load", init);
+    window.addEventListener("load", init); //Wenn Seite vollst�ndig geladen, beginnt die Funktion
+    //Variablen der Klassen
     let cloud = [];
     let snowflake = [];
     let skier = [];
     let imgData;
+    //Funktion f�r Canvas
     function init() {
         let canvas = document.getElementsByTagName("canvas")[0];
         console.log("start init");
@@ -102,26 +104,26 @@ var A05;
         A05.crc2.lineTo(250, 600);
         A05.crc2.closePath();
         A05.crc2.stroke();
-        //plazierte B�ume
+        //an bestimmte Positionen gezeichnete B�ume
         drawTree(670, 450, "#315A10");
         drawTree(550, 500, "#315A10");
-        //Schleife f�r zuf�llige B�ume
+        //Schleife f�r zuf�llige B�ume, wieviel und in welchem Bereich festgelegt
         for (let i = 0; i < 10; i++) {
             let x = 500 + Math.random() * 200;
             let y = 350 + Math.random() * 200;
             drawTree(x, y, "#549222");
         }
-        //Skifahrer
+        //Schleife f�r Skifahrer
         for (let i = 0; i < 7; i++) {
             skier[i] = new A05.Skier(Math.random() * 500 + 750, Math.random() * 200 - 25, Math.random() * 1.5 - 3.5, Math.random() * 1 + 1, "hsl(" + Math.random() * 360 + ", 100%, 50%)");
             console.log("for-Schleife Skifahrer init");
         }
-        //Schneeflocken
+        //Schleife f�r Schneeflocken
         for (let i = 0; i < 2000; i++) {
             snowflake[i] = new A05.Snowflake(Math.random() * 800, Math.random() * 600);
             console.log("for-Schleife Snowflake init");
         }
-        //Wolken
+        //Schleife f�r Wolken
         for (let i = 0; i < 3; i++) {
             cloud[i] = new A05.Cloud(Math.random() * 800, Math.random() * 30 + 40);
             console.log("for-Schleife Cloud init");
@@ -154,11 +156,11 @@ var A05;
     function animate() {
         console.log("Timeout");
         A05.crc2.putImageData(imgData, 0, 0);
-        //Skifahrer
+        //Skifahrer fahren lassen
         for (let i = 0; i < skier.length; i++) {
             skier[i].update();
         }
-        //Schneeflocken
+        //Schneeflocken fallen lassen
         for (let i = 0; i < snowflake.length; i++) {
             snowflake[i].update();
         }
