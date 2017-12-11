@@ -16,7 +16,7 @@ namespace Aufgabe8 {
             alert("Hoppla! Deine Zahl liegt nicht zwischen 10 und 100");      //alert-Fenster bei falscher Eingabe
             init();                             //Funktionsaufruf, Zahl kann erneut eingegeben werden
         }
-        else { // ANDERNFALLS (bei richtiger Eingabe)...
+        else { 
             for (let i: number = 0; i < parseInt(amountBoxes); i++) { //for-Schleife wird so oft ausgeführt, wie die eingegebene Zahl hoch ist
                 drawBox(Math.random() * window.innerWidth - 40, Math.random() * window.innerHeight - 40, Math.random() * 400); //Aufruf der Funktion drawBox, Parameter werden übergeben
             }
