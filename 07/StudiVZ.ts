@@ -25,7 +25,7 @@ namespace StudiVZ {
         switch (action) {
             case "n":
             case "N":
-                var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 oder 1) und Kommentar");
+                var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0=m oder 1=w) und Kommentar");
                 alert(saveData(input));
                 break;
             case "a":
@@ -40,41 +40,68 @@ namespace StudiVZ {
     }
 
     function saveData(_input: string): string {
-        let splitted: string[] = _input.split(",");
+        let splitted: string[] = _input.split(",", 6); //String wird in 6 Teile gesplittet
 
-        let studentDat: StudentData = {
-
-            matrikel: parseInt(splitted[0]),
-            name: splitted[1],
-            vorname: splitted[2],
-            alter: parseInt(splitted[3]),
-            geschlecht: parseInt(splitted[4]) == 0,
-            kommentar: splitted[5]
-        };
-
-        if (Number.isNaN(studentDat.matrikel)) {
-
-            return "Matrikelnummer falsch";
+        if (Number.isNaN(parseInt(splitted[0]))) {  //parseInt macht aus einem string eine number
+            return "'Matrikelnummer' muss eine Zahl sein";
         }
 
-        students.push(studentDat);
+        else if (splitted[1] == "") {
+            return "'Name' darf nicht leer sein";
+        }
+        else if (splitted[2] == "") {
+            return "'Vorname' darf nicht leer sein";
+        }
+        else if (parseInt(splitted[3]) == NaN) {
+            return "'Alter' muss eine Zahl sein";
+        }
+        else if (parseInt(splitted[4]) != 1 && parseInt(splitted[4]) != 0) {
+            return "'Geschlecht' bitte mit 0=m oder 1=w eingeben; Eingabe war: " + splitted[4];
+        }
+        else if (splitted[5] == "") {
+            return "Bitte Kommentar eingeben";
+        }
+        else {
 
-        return "Deine Daten: " + "\nMatrikelnr: " + studentDat.matrikel + "\nName: " + studentDat.name + "\nVorname: " + studentDat.vorname + "\nAlter: " + studentDat.alter + "\nGeschlecht: " + studentDat.geschlecht + "\nKommentar: " + studentDat.kommentar;
+            let studentDat: StudentData = {
+
+                matrikel: parseInt(splitted[0]),
+                name: splitted[1],
+                vorname: splitted[2],
+                alter: parseInt(splitted[3]),
+                geschlecht: parseInt(splitted[4]) == 1,
+                kommentar: splitted[5]
+            };
+
+            students.push(studentDat);
+
+            return "Daten erfolgreich gespeichert";
+        }
     }
-
     function queryData(_matrikel: number): string {
         for (let i: number = 0; i < students.length; i++) {
 
             if (students[i].matrikel == _matrikel) {
+                let matrikelnummer: string = "Matrikelnummer " + students[i].matrikel;
+                let name: string = "Name: " + students[i].name;
+                let vorname: string = "Vorname: " + students[i].vorname;
+                let alter: string = "Alter: " + students[i].alter;
+                let geschlecht: string;
 
-                return "Deine Daten: " + "\nMatrikelnr: " + students[i].matrikel + "\nName: " + students[i].name + "\nVorname: " + students[i].vorname + "\nAlter: " + students[i].alter + "\nGeschlecht: " + students[i].geschlecht + "\nKommentar: " + students[i].kommentar;
+                if (students[i].geschlecht) {
+                    geschlecht = "Geschlecht: weiblich";
+                }
+                else
+                    geschlecht = "Geschlecht: männlich";
+
+                let kommentar: string = "Kommentar: " + students[i].kommentar;
+
+                return "Deine Daten: " + "\n" + matrikelnummer + "\n" + name + "\n" + vorname + "\n" + alter + "\n" + geschlecht + "\n" + kommentar;
             }
-
             else {
-                continue;
+                return "Deine Daten sind in der Datenbank nicht vorhanden";
             }
-        }
 
-        return "Matrikelnummer nicht gespeichert";
+        }
     }
 }
