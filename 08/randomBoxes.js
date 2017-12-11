@@ -16,7 +16,7 @@ var Aufgabe8;
         }
         else {
             for (let i = 0; i < parseInt(amountBoxes); i++) {
-                drawBox(Math.random() * window.innerWidth, Math.random() * window.innerHeight, Math.random() * 400); //Aufruf der Funktion drawBox, Parameter werden �bergeben
+                drawBox(Math.random() * window.innerWidth - 40, Math.random() * window.innerHeight - 40, Math.random() * 400); //Aufruf der Funktion drawBox, Parameter werden �bergeben
             }
         }
     }

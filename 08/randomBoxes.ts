@@ -18,7 +18,7 @@ namespace Aufgabe8 {
         }
         else { // ANDERNFALLS (bei richtiger Eingabe)...
             for (let i: number = 0; i < parseInt(amountBoxes); i++) { //for-Schleife wird so oft ausgeführt, wie die eingegebene Zahl hoch ist
-                drawBox(Math.random() * window.innerWidth, Math.random() * window.innerHeight, Math.random() * 400); //Aufruf der Funktion drawBox, Parameter werden übergeben
+                drawBox(Math.random() * window.innerWidth - 40, Math.random() * window.innerHeight - 40, Math.random() * 400); //Aufruf der Funktion drawBox, Parameter werden übergeben
             }
         }
     }
