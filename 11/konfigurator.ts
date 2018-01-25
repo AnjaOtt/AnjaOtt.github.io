@@ -1,11 +1,11 @@
-/*Aufgabe: 10
+/*Aufgabe: 11
 Name: Anja Ott
 Matrikel: 256342
-Datum: 08.01.18
+Datum: 24.01.18
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
 
-namespace Aufgabe10 {
+namespace Aufgabe11 {
     window.addEventListener("load", createElements);
     window.addEventListener("change", warenkorb);
 
