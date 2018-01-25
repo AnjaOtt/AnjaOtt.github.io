@@ -25,7 +25,7 @@ namespace SendData {
     }
 
     function sendRequest(_color: string): void {
-        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        let xhr: XMLHttpRequest = new XMLHttpRequest(); // Klasse bzw. deren Objekte können Daten empfangen und senden, ohne dass die Seite neu geladen werden muss
         //xhr.open("GET", "http://localhost:8100?color=" + _color, true);
         xhr.open("GET", "https://eia2-w17-servertest.herokuapp.com?color=" + _color, true);
         xhr.addEventListener("readystatechange", handleStateChange);
