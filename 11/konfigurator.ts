@@ -30,6 +30,10 @@ namespace Aufgabe11 {
     
     //Button
     let feedback: HTMLDivElement = document.createElement("div");
+    
+    let gesamtpreisB: HTMLInputElement = document.createElement("input");
+    gesamtpreisB.style.display = "none";
+
 
     //Die erstellten Elemente werden später mit Eigenschaften ausgestattet und ans DOM gehängt
     
@@ -39,7 +43,7 @@ namespace Aufgabe11 {
         
         let baumart: HTMLDivElement = <HTMLDivElement>document.getElementById("baumart");
         let selectBox: HTMLSelectElement = document.createElement("select");
-        selectBox.name = "SelectBaumart";
+        selectBox.name = "Baumart";
         selectBox.id = "selectBaumart";
         baumart.appendChild(selectBox);
         
@@ -59,8 +63,8 @@ namespace Aufgabe11 {
             if (posten[i].art == "Halter") {
                 var radioB: HTMLInputElement = document.createElement("input");
                 radioB.type = "radio";
-                radioB.name = "radioGroupHalterung";
-                radioB.value = "radio" + i;
+                radioB.name = "Halterung";
+                radioB.value = posten[i].name;
                 radioB.id = "radio" + i;
                 halterung.appendChild(radioB);
                 
@@ -77,7 +81,7 @@ namespace Aufgabe11 {
         
         let beleuchtung: HTMLDivElement = <HTMLDivElement>document.getElementById("beleuchtung");
         let selectBox2: HTMLSelectElement = document.createElement("select");
-        selectBox2.name = "SelectBeleuchtung";
+        selectBox2.name = "Beleuchtung";
         selectBox2.id = "selectBeleuchtung";
         beleuchtung.appendChild(selectBox2);
         for (let i: number = 0; i < posten.length; i++) {
@@ -97,7 +101,7 @@ namespace Aufgabe11 {
             if (posten[i].art == "Schmuck") {
                 var checkB: HTMLInputElement = document.createElement("input");
                 checkB.type = "checkbox";       //Checkboxen erstellen
-                checkB.name = "CheckboxSchmuckartikel";
+                checkB.name = "Schmuckartikel: " + posten[i].name;
                 checkB.value = "check";
                 checkB.id = "check" + i;
                 schmuckartikel.appendChild(checkB);
@@ -112,8 +116,7 @@ namespace Aufgabe11 {
                 //Stepper erstellen
                 let stepper: HTMLInputElement = document.createElement("input");
                 stepper.type = "number";
-                stepper.name = "StepperSchmuckartikel" + i;
-                stepper.value = "1";
+                stepper.value = "0";
                 stepper.id = "stepper" + i;
                 stepper.min = "0";
                 stepper.max = "15";
@@ -129,7 +132,7 @@ namespace Aufgabe11 {
         let daten: HTMLDivElement = <HTMLDivElement>document.getElementById("daten");
         name = document.createElement("input");
         name.type = "text";
-        name.name = "DatenName";
+        name.name = "Name";
         name.placeholder = "Name";
         name.pattern = "[a-zA-Z]{1,}";
         name.required = true;
@@ -137,7 +140,7 @@ namespace Aufgabe11 {
         
         vorname = document.createElement("input");
         vorname.type = "text";
-        vorname.name = "DatenName";
+        vorname.name = "Vorname";
         vorname.placeholder = "Vorame";
         vorname.pattern = "[a-zA-Z]{1,}";
         vorname.required = true;
@@ -145,7 +148,7 @@ namespace Aufgabe11 {
 
         strasse = document.createElement("input");
         strasse.type = "text";
-        strasse.name = "DatenStrasse";
+        strasse.name = "Strasse";
         strasse.placeholder = "Straße";
         strasse.pattern = "[a-zA-Z]{1,}";
         strasse.required = true;
@@ -153,7 +156,7 @@ namespace Aufgabe11 {
 
         hausNr = document.createElement("input");
         hausNr.type = "text";
-        hausNr.name = "DatenHausnummer";
+        hausNr.name = "Hausnummer";
         hausNr.placeholder = "Hausnummer";
         hausNr.pattern = "[0-9]{1,}";
         hausNr.required = true;
@@ -161,7 +164,7 @@ namespace Aufgabe11 {
 
         plz = document.createElement("input");
         plz.type = "text";
-        plz.name = "DatenPLZ";
+        plz.name = "PLZ";
         plz.placeholder = "Postleitzahl";
         plz.pattern = "[0-9]{5}";
         plz.required = true;
@@ -169,7 +172,7 @@ namespace Aufgabe11 {
 
         ort = document.createElement("input");
         ort.type = "text";
-        ort.name = "DatenOrt";
+        ort.name = "Ort";
         ort.placeholder = "Ort";
         ort.pattern = "[a-zA-Z]{1,}";
         ort.required = true;
@@ -178,7 +181,7 @@ namespace Aufgabe11 {
         
         mail = document.createElement("input");
         mail.type = "email";
-        mail.name = "DatenMail";
+        mail.name = "Mail";
         mail.placeholder = "E-Mail";
         mail.required = true;
         daten.appendChild(mail);
@@ -191,8 +194,8 @@ namespace Aufgabe11 {
             if (posten[i].art == "Lieferung") {
                 var radioB2: HTMLInputElement = document.createElement("input");
                 radioB2.type = "radio";
-                radioB2.name = "radioGroupLieferoptionen";
-                radioB2.value = "radio2." + i;
+                radioB2.name = "Lieferoptionen";
+                radioB2.value = posten[i].name;
                 radioB2.id = "radio2." + i;
                 lieferopt.appendChild(radioB2);
                 
@@ -209,8 +212,8 @@ namespace Aufgabe11 {
         
         let button: HTMLDivElement = <HTMLDivElement>document.getElementById("button");
         let submit: HTMLButtonElement = document.createElement("button");
-        submit.name = "Button";
-        submit.type = "button";
+        
+        submit.type = "submit";
         submit.innerText = "Bestellung überprüfen";
         submit.addEventListener("mousedown", handleMouseDown);
         button.appendChild(submit);
@@ -277,6 +280,8 @@ namespace Aufgabe11 {
             }
         }
         korb.innerHTML += "<hr> Rechnungsbetrag: " + Math.round(gesamtpreis * 100) / 100 + "€";
+        gesamtpreisB.name = "Gesamtpreis: " + Math.round(gesamtpreis * 100) / 100 + " Euro";
+        korb.appendChild(gesamtpreisB);
     }
 
     //Feedback vom Button

@@ -25,12 +25,14 @@ var Aufgabe11;
     var basketLieferopt = ["keine Lieferoption ausgew�hlt", "0"];
     //Button
     let feedback = document.createElement("div");
+    let gesamtpreisB = document.createElement("input");
+    gesamtpreisB.style.display = "none";
     //Die erstellten Elemente werden sp�ter mit Eigenschaften ausgestattet und ans DOM geh�ngt
     function createElements() {
         //Baumart definieren
         let baumart = document.getElementById("baumart");
         let selectBox = document.createElement("select");
-        selectBox.name = "SelectBaumart";
+        selectBox.name = "Baumart";
         selectBox.id = "selectBaumart";
         baumart.appendChild(selectBox);
         for (let i = 0; i < Aufgabe11.posten.length; i++) {
@@ -47,8 +49,8 @@ var Aufgabe11;
             if (Aufgabe11.posten[i].art == "Halter") {
                 var radioB = document.createElement("input");
                 radioB.type = "radio";
-                radioB.name = "radioGroupHalterung";
-                radioB.value = "radio" + i;
+                radioB.name = "Halterung";
+                radioB.value = Aufgabe11.posten[i].name;
                 radioB.id = "radio" + i;
                 halterung.appendChild(radioB);
                 //Label f�r jede Halterung hinzuf�gen
@@ -62,7 +64,7 @@ var Aufgabe11;
         //Beleuchtung definieren
         let beleuchtung = document.getElementById("beleuchtung");
         let selectBox2 = document.createElement("select");
-        selectBox2.name = "SelectBeleuchtung";
+        selectBox2.name = "Beleuchtung";
         selectBox2.id = "selectBeleuchtung";
         beleuchtung.appendChild(selectBox2);
         for (let i = 0; i < Aufgabe11.posten.length; i++) {
@@ -79,7 +81,7 @@ var Aufgabe11;
             if (Aufgabe11.posten[i].art == "Schmuck") {
                 var checkB = document.createElement("input");
                 checkB.type = "checkbox"; //Checkboxen erstellen
-                checkB.name = "CheckboxSchmuckartikel";
+                checkB.name = "Schmuckartikel: " + Aufgabe11.posten[i].name;
                 checkB.value = "check";
                 checkB.id = "check" + i;
                 schmuckartikel.appendChild(checkB);
@@ -92,8 +94,7 @@ var Aufgabe11;
                 //Stepper erstellen
                 let stepper = document.createElement("input");
                 stepper.type = "number";
-                stepper.name = "StepperSchmuckartikel" + i;
-                stepper.value = "1";
+                stepper.value = "0";
                 stepper.id = "stepper" + i;
                 stepper.min = "0";
                 stepper.max = "15";
@@ -107,49 +108,49 @@ var Aufgabe11;
         let daten = document.getElementById("daten");
         name = document.createElement("input");
         name.type = "text";
-        name.name = "DatenName";
+        name.name = "Name";
         name.placeholder = "Name";
         name.pattern = "[a-zA-Z]{1,}";
         name.required = true;
         daten.appendChild(name);
         vorname = document.createElement("input");
         vorname.type = "text";
-        vorname.name = "DatenName";
+        vorname.name = "Vorname";
         vorname.placeholder = "Vorame";
         vorname.pattern = "[a-zA-Z]{1,}";
         vorname.required = true;
         daten.appendChild(vorname);
         strasse = document.createElement("input");
         strasse.type = "text";
-        strasse.name = "DatenStrasse";
+        strasse.name = "Strasse";
         strasse.placeholder = "Stra�e";
         strasse.pattern = "[a-zA-Z]{1,}";
         strasse.required = true;
         daten.appendChild(strasse);
         hausNr = document.createElement("input");
         hausNr.type = "text";
-        hausNr.name = "DatenHausnummer";
+        hausNr.name = "Hausnummer";
         hausNr.placeholder = "Hausnummer";
         hausNr.pattern = "[0-9]{1,}";
         hausNr.required = true;
         daten.appendChild(hausNr);
         plz = document.createElement("input");
         plz.type = "text";
-        plz.name = "DatenPLZ";
+        plz.name = "PLZ";
         plz.placeholder = "Postleitzahl";
         plz.pattern = "[0-9]{5}";
         plz.required = true;
         daten.appendChild(plz);
         ort = document.createElement("input");
         ort.type = "text";
-        ort.name = "DatenOrt";
+        ort.name = "Ort";
         ort.placeholder = "Ort";
         ort.pattern = "[a-zA-Z]{1,}";
         ort.required = true;
         daten.appendChild(ort);
         mail = document.createElement("input");
         mail.type = "email";
-        mail.name = "DatenMail";
+        mail.name = "Mail";
         mail.placeholder = "E-Mail";
         mail.required = true;
         daten.appendChild(mail);
@@ -159,8 +160,8 @@ var Aufgabe11;
             if (Aufgabe11.posten[i].art == "Lieferung") {
                 var radioB2 = document.createElement("input");
                 radioB2.type = "radio";
-                radioB2.name = "radioGroupLieferoptionen";
-                radioB2.value = "radio2." + i;
+                radioB2.name = "Lieferoptionen";
+                radioB2.value = Aufgabe11.posten[i].name;
                 radioB2.id = "radio2." + i;
                 lieferopt.appendChild(radioB2);
                 //Labels hinzuf�gen
@@ -174,8 +175,7 @@ var Aufgabe11;
         //Button generieren
         let button = document.getElementById("button");
         let submit = document.createElement("button");
-        submit.name = "Button";
-        submit.type = "button";
+        submit.type = "submit";
         submit.innerText = "Bestellung �berpr�fen";
         submit.addEventListener("mousedown", handleMouseDown);
         button.appendChild(submit);
@@ -231,6 +231,8 @@ var Aufgabe11;
             }
         }
         korb.innerHTML += "<hr> Rechnungsbetrag: " + Math.round(gesamtpreis * 100) / 100 + "�";
+        gesamtpreisB.name = "Gesamtpreis: " + Math.round(gesamtpreis * 100) / 100 + " Euro";
+        korb.appendChild(gesamtpreisB);
     }
     //Feedback vom Button
     function handleMouseDown(_event) {
