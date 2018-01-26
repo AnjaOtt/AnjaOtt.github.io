@@ -1,11 +1,11 @@
-/*Aufgabe: 10
+/*Aufgabe: 11
 Name: Anja Ott
 Matrikel: 256342
-Datum: 08.01.18
+Datum: 24.01.18
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 */
-var Aufgabe10;
-(function (Aufgabe10) {
+var Aufgabe11;
+(function (Aufgabe11) {
     window.addEventListener("load", createElements);
     window.addEventListener("change", warenkorb);
     //Pers�nliche Angaben/Texteingabefelder erstellen 
@@ -33,18 +33,18 @@ var Aufgabe10;
         selectBox.name = "SelectBaumart";
         selectBox.id = "selectBaumart";
         baumart.appendChild(selectBox);
-        for (let i = 0; i < Aufgabe10.posten.length; i++) {
-            if (Aufgabe10.posten[i].art == "Baumart") {
+        for (let i = 0; i < Aufgabe11.posten.length; i++) {
+            if (Aufgabe11.posten[i].art == "Baumart") {
                 var opt = document.createElement("option");
-                opt.innerText = Aufgabe10.posten[i].name;
+                opt.innerText = Aufgabe11.posten[i].name;
                 opt.id = "option" + i;
                 selectBox.appendChild(opt);
             }
         }
         //Halterung definieren
         let halterung = document.getElementById("halterung");
-        for (let i = 0; i < Aufgabe10.posten.length; i++) {
-            if (Aufgabe10.posten[i].art == "Halter") {
+        for (let i = 0; i < Aufgabe11.posten.length; i++) {
+            if (Aufgabe11.posten[i].art == "Halter") {
                 var radioB = document.createElement("input");
                 radioB.type = "radio";
                 radioB.name = "radioGroupHalterung";
@@ -55,7 +55,7 @@ var Aufgabe10;
                 label = document.createElement("label");
                 label.id = "label" + i;
                 label.htmlFor = radioB.id;
-                label.innerText = Aufgabe10.posten[i].name;
+                label.innerText = Aufgabe11.posten[i].name;
                 halterung.appendChild(label);
             }
         }
@@ -65,18 +65,18 @@ var Aufgabe10;
         selectBox2.name = "SelectBeleuchtung";
         selectBox2.id = "selectBeleuchtung";
         beleuchtung.appendChild(selectBox2);
-        for (let i = 0; i < Aufgabe10.posten.length; i++) {
-            if (Aufgabe10.posten[i].art == "Beleuchtung") {
+        for (let i = 0; i < Aufgabe11.posten.length; i++) {
+            if (Aufgabe11.posten[i].art == "Beleuchtung") {
                 var opt2 = document.createElement("option");
-                opt2.innerText = Aufgabe10.posten[i].name;
+                opt2.innerText = Aufgabe11.posten[i].name;
                 opt2.id = "option2." + i;
                 selectBox2.appendChild(opt2);
             }
         }
         //Schmuckartikel definieren
         let schmuckartikel = document.getElementById("schmuckartikel");
-        for (let i = 0; i < Aufgabe10.posten.length; i++) {
-            if (Aufgabe10.posten[i].art == "Schmuck") {
+        for (let i = 0; i < Aufgabe11.posten.length; i++) {
+            if (Aufgabe11.posten[i].art == "Schmuck") {
                 var checkB = document.createElement("input");
                 checkB.type = "checkbox"; //Checkboxen erstellen
                 checkB.name = "CheckboxSchmuckartikel";
@@ -87,7 +87,7 @@ var Aufgabe10;
                 var label2 = document.createElement("label");
                 label2.id = "label2." + i;
                 label2.htmlFor = checkB.id;
-                label2.innerText = Aufgabe10.posten[i].name;
+                label2.innerText = Aufgabe11.posten[i].name;
                 schmuckartikel.appendChild(label2);
                 //Stepper erstellen
                 let stepper = document.createElement("input");
@@ -155,8 +155,8 @@ var Aufgabe10;
         daten.appendChild(mail);
         //Lieferoptionen definieren
         let lieferopt = document.getElementById("lieferoptionen");
-        for (let i = 0; i < Aufgabe10.posten.length; i++) {
-            if (Aufgabe10.posten[i].art == "Lieferung") {
+        for (let i = 0; i < Aufgabe11.posten.length; i++) {
+            if (Aufgabe11.posten[i].art == "Lieferung") {
                 var radioB2 = document.createElement("input");
                 radioB2.type = "radio";
                 radioB2.name = "radioGroupLieferoptionen";
@@ -167,7 +167,7 @@ var Aufgabe10;
                 var label3 = document.createElement("label");
                 label3.id = "label3." + i;
                 label3.htmlFor = radioB2.id;
-                label3.innerText = Aufgabe10.posten[i].name;
+                label3.innerText = Aufgabe11.posten[i].name;
                 lieferopt.appendChild(label3);
             }
         }
@@ -187,30 +187,30 @@ var Aufgabe10;
         let checkBoxes = [];
         let gesamtpreis = 0;
         //Auswahl �berpr�fen
-        for (let i = 0; i < Aufgabe10.posten.length; i++) {
+        for (let i = 0; i < Aufgabe11.posten.length; i++) {
             console.log(_event.target);
-            if (Aufgabe10.posten[i].art == "Schmuck") {
+            if (Aufgabe11.posten[i].art == "Schmuck") {
                 stepper[i] = document.getElementById("stepper" + i);
                 checkBoxes[i] = document.getElementById("check" + i);
             }
-            if (target.value == Aufgabe10.posten[i].name && target.id == "selectBaumart") {
-                basketBaumart[0] = Aufgabe10.posten[i].name;
-                basketBaumart[1] = "" + Aufgabe10.posten[i].preis;
+            if (target.value == Aufgabe11.posten[i].name && target.id == "selectBaumart") {
+                basketBaumart[0] = Aufgabe11.posten[i].name;
+                basketBaumart[1] = "" + Aufgabe11.posten[i].preis;
             }
             if (target.id == "radio" + i) {
-                basketHalter[0] = Aufgabe10.posten[i].name;
-                basketHalter[1] = "" + Aufgabe10.posten[i].preis;
+                basketHalter[0] = Aufgabe11.posten[i].name;
+                basketHalter[1] = "" + Aufgabe11.posten[i].preis;
             }
             if (target.id == "radio2." + i) {
-                basketLieferopt[0] = Aufgabe10.posten[i].name;
-                basketLieferopt[1] = "" + Aufgabe10.posten[i].preis;
+                basketLieferopt[0] = Aufgabe11.posten[i].name;
+                basketLieferopt[1] = "" + Aufgabe11.posten[i].preis;
             }
-            if (target.value == Aufgabe10.posten[i].name && target.id == "selectBeleuchtung") {
-                basketBeleuchtung[0] = Aufgabe10.posten[i].name;
-                basketBeleuchtung[1] = "" + Aufgabe10.posten[i].preis;
+            if (target.value == Aufgabe11.posten[i].name && target.id == "selectBeleuchtung") {
+                basketBeleuchtung[0] = Aufgabe11.posten[i].name;
+                basketBeleuchtung[1] = "" + Aufgabe11.posten[i].preis;
             }
             if (target.id == "check" + i || target.id == "stepper" + i) {
-                basketSchmuck[i] = [Aufgabe10.posten[i].name, "" + (Aufgabe10.posten[i].preis * parseInt(stepper[i].value))];
+                basketSchmuck[i] = [Aufgabe11.posten[i].name, "" + (Aufgabe11.posten[i].preis * parseInt(stepper[i].value))];
             }
         }
         //Warenkorb Zusammenfassung
@@ -247,5 +247,5 @@ var Aufgabe10;
             document.body.appendChild(feedback);
         }
     }
-})(Aufgabe10 || (Aufgabe10 = {}));
+})(Aufgabe11 || (Aufgabe11 = {}));
 //# sourceMappingURL=konfigurator.js.map
