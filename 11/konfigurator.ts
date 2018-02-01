@@ -20,20 +20,20 @@ namespace Aufgabe11 {
     var mail: HTMLInputElement;
     var label: HTMLLabelElement;
 
-    //Variablen erstellen und bef�llen
+    //Variablen erstellen und befüllen
     
-    var basketBaumart: string[] = ["keine Baumart ausgew�hlt", "0"]; //Array schon befüllt, aber an späterer Stelle überschrieben
-    var basketHalter: string[] = ["kein Halter ausgew�hlt", "0"];
-    var basketBeleuchtung: string[] = ["keine Beleuchtung ausgew�hlt", "0"];
+    var basketBaumart: string[] = ["keine Baumart ausgewählt", "0"]; //Array schon befüllt, aber an späterer Stelle überschrieben
+    var basketHalter: string[] = ["kein Halter ausgewählt", "0"];
+    var basketBeleuchtung: string[] = ["keine Beleuchtung ausgewählt", "0"];
     var basketSchmuck: string[][] = [];
-    var basketLieferopt: string[] = ["keine Lieferoption ausgew�hlt", "0"];
+    var basketLieferopt: string[] = ["keine Lieferoption ausgewählt", "0"];
     
     //Button
     let feedback: HTMLDivElement = document.createElement("div");
     
     
 
-    //Die erstellten Elemente werden sp�ter mit Eigenschaften ausgestattet und ans DOM geh�ngt
+    //Die erstellten Elemente werden später mit Eigenschaften ausgestattet und ans DOM geh�ngt
     
     function createElements(): void {
         
@@ -66,7 +66,7 @@ namespace Aufgabe11 {
                 radioB.id = "radio" + i;
                 halterung.appendChild(radioB);
                 
-                //Label f�r jede Halterung hinzuf�gen
+                //Label für jede Halterung hinzufügen
                 label = document.createElement("label");
                 label.id = "label" + i;
                 label.htmlFor = radioB.id;
@@ -104,7 +104,7 @@ namespace Aufgabe11 {
                 checkB.id = "check" + i;
                 schmuckartikel.appendChild(checkB);
                    
-                //Label f�r jeden Schmuckartikel hinzuf�gen
+                //Label für jeden Schmuckartikel hinzufügen
                 var label2: HTMLLabelElement = document.createElement("label");
                 label2.id = "label2." + i;
                 label2.htmlFor = checkB.id;
@@ -132,7 +132,7 @@ namespace Aufgabe11 {
         name.type = "text";
         name.name = "Name";
         name.placeholder = "Name";
-        name.pattern = "[a-zA-Z]{1,}";
+        name.pattern = "[a-zA-ZßÄÜÖäüö]{1,}";
         name.required = true;
         daten.appendChild(name);
         
@@ -140,15 +140,15 @@ namespace Aufgabe11 {
         vorname.type = "text";
         vorname.name = "Vorname";
         vorname.placeholder = "Vorame";
-        vorname.pattern = "[a-zA-Z]{1,}";
+        vorname.pattern = "[a-zA-ZßäüöÄÜÖ]{1,}";
         vorname.required = true;
         daten.appendChild(vorname);
 
         strasse = document.createElement("input");
         strasse.type = "text";
         strasse.name = "Strasse";
-        strasse.placeholder = "Stra�e";
-        strasse.pattern = "[a-zA-Z]{1,}";
+        strasse.placeholder = "Straße";
+        strasse.pattern = "[a-zA-ZßäüöÄÜÖ]{1,}";
         strasse.required = true;
         daten.appendChild(strasse);
 
@@ -156,7 +156,7 @@ namespace Aufgabe11 {
         hausNr.type = "text";
         hausNr.name = "Hausnummer";
         hausNr.placeholder = "Hausnummer";
-        hausNr.pattern = "[0-9]{1,}";
+        hausNr.pattern = "[0-9abc]{1,}";
         hausNr.required = true;
         daten.appendChild(hausNr);
 
@@ -172,7 +172,7 @@ namespace Aufgabe11 {
         ort.type = "text";
         ort.name = "Ort";
         ort.placeholder = "Ort";
-        ort.pattern = "[a-zA-Z]{1,}";
+        ort.pattern = "[a-zA-ZßÄÜÖäüö]{1,}";
         ort.required = true;
         daten.appendChild(ort);
 
@@ -197,7 +197,7 @@ namespace Aufgabe11 {
                 radioB2.id = "radio2." + i;
                 lieferopt.appendChild(radioB2);
                 
-                //Labels hinzuf�gen
+                //Labels hinzufügen
                 var label3: HTMLLabelElement = document.createElement("label");
                 label3.id = "label3." + i;
                 label3.htmlFor = radioB2.id;
@@ -212,7 +212,7 @@ namespace Aufgabe11 {
         let submit: HTMLButtonElement = document.createElement("button");
         
         submit.type = "submit";
-        submit.innerText = "Bestellung �berpr�fen";
+        submit.innerText = "Bestellung überprüfen";
         submit.addEventListener("mousedown", handleMouseDown);
         button.appendChild(submit);
     }
@@ -225,7 +225,7 @@ namespace Aufgabe11 {
         let checkBoxes: HTMLInputElement[] = []; //Checkbox-Elemente zwischenspeichern
         let gesamtpreis: number = 0;
         
-        //Auswahl �berpr�fen
+        //Auswahl überprüfen
         
         for (let i: number = 0; i < posten.length; i++) {
             console.log(_event.target);
@@ -265,19 +265,20 @@ namespace Aufgabe11 {
         korb.style.height = "auto";
         korb.style.backgroundColor = "#b6cf8f";
         korb.innerHTML = "<span class='wk'>Warenkorb</span><br>";
-        korb.innerHTML += "" + basketBaumart[0] + " " + basketBaumart[1] + "� <br>"; // Warenkorb mit mit Name und Preis füllen
-        korb.innerHTML += "" + basketHalter[0] + " " + basketHalter[1] + "� <br>";
-        korb.innerHTML += "" + basketBeleuchtung[0] + " " + basketBeleuchtung[1] + "� <br>";
-        korb.innerHTML += " " + basketLieferopt[0] + " " + basketLieferopt[1] + "� <br>";
+        korb.innerHTML += "" + basketBaumart[0] + " " + basketBaumart[1] + "€ <br>"; // Warenkorb mit mit Name und Preis füllen
+        korb.innerHTML += "" + basketHalter[0] + " " + basketHalter[1] + "€ <br>";
+        korb.innerHTML += "" + basketBeleuchtung[0] + " " + basketBeleuchtung[1] + "€ <br>";
+        korb.innerHTML += " " + basketLieferopt[0] + " " + basketLieferopt[1] + "€ <br>";
 
         gesamtpreis = parseFloat(basketBaumart[1]) + parseFloat(basketHalter[1]) + parseFloat(basketLieferopt[1]); //Preise von Baumart, Halter und Lieferoption von String in Fließkommazahl
         for (let i: number = 0; i < stepper.length; i++) {
-            if (checkBoxes[i] != null && checkBoxes[i].checked == true) { 
-                gesamtpreis += parseFloat(basketSchmuck[i][1]);
-                korb.innerHTML += "" + basketSchmuck[i][0] + " " + basketSchmuck[i][1] + "� <br>";
+            if (checkBoxes[i] != null && checkBoxes[i].checked == true) { //Wenn das Array an der Stelle i keinen Wert hat und die Checkbox angelickt ist,
+                gesamtpreis += parseFloat(basketSchmuck[i][1]); //...dann wird der Preis vom Schmuck ebenfalls in der Variable gesamtpreis gespeichert
+                korb.innerHTML += "" + basketSchmuck[i][0] + " " + basketSchmuck[i][1] + "€  <br>"; //und der Text im Warenkorb ausgegeben
             }
         }
-        korb.innerHTML += "<hr> Rechnungsbetrag: " + Math.round(gesamtpreis * 100) / 100 + "�";
+        
+        korb.innerHTML += "<hr> Rechnungsbetrag: " + Math.round(gesamtpreis * 100) / 100 + "€";
         
     }
 
@@ -287,12 +288,12 @@ namespace Aufgabe11 {
         feedback.innerText = " ";
         feedback.style.paddingBottom = "1em";
         if (name.checkValidity() == false || strasse.checkValidity() == false || hausNr.checkValidity() == false || ort.checkValidity() == false || plz.checkValidity() == false || mail.checkValidity() == false) {
-            feedback.innerText = "Bitte �berpr�fe die Angaben deiner Bestellung.";
+            feedback.innerText = "Bitte überprüfe die Angaben deiner Bestellung.";
             feedback.style.color = "#e35252";
             document.body.appendChild(feedback);
         }
         else {
-            feedback.innerText = "Vielen Dank f�r deine Bestellung!";
+            feedback.innerText = "Vielen Dank für deine Bestellung!";
             feedback.style.color = "#b6cf8f";
             document.body.appendChild(feedback);
         }

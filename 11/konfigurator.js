@@ -17,15 +17,15 @@ var Aufgabe11;
     var plz;
     var mail;
     var label;
-    //Variablen erstellen und bef�llen
-    var basketBaumart = ["keine Baumart ausgew�hlt", "0"]; //Array schon befüllt, aber an späterer Stelle überschrieben
-    var basketHalter = ["kein Halter ausgew�hlt", "0"];
-    var basketBeleuchtung = ["keine Beleuchtung ausgew�hlt", "0"];
+    //Variablen erstellen und befüllen
+    var basketBaumart = ["keine Baumart ausgewählt", "0"]; //Array schon befüllt, aber an späterer Stelle überschrieben
+    var basketHalter = ["kein Halter ausgewählt", "0"];
+    var basketBeleuchtung = ["keine Beleuchtung ausgewählt", "0"];
     var basketSchmuck = [];
-    var basketLieferopt = ["keine Lieferoption ausgew�hlt", "0"];
+    var basketLieferopt = ["keine Lieferoption ausgewählt", "0"];
     //Button
     let feedback = document.createElement("div");
-    //Die erstellten Elemente werden sp�ter mit Eigenschaften ausgestattet und ans DOM geh�ngt
+    //Die erstellten Elemente werden später mit Eigenschaften ausgestattet und ans DOM geh�ngt
     function createElements() {
         //Baumart definieren
         let baumart = document.getElementById("baumart");
@@ -51,7 +51,7 @@ var Aufgabe11;
                 radioB.value = Aufgabe11.posten[i].name;
                 radioB.id = "radio" + i;
                 halterung.appendChild(radioB);
-                //Label f�r jede Halterung hinzuf�gen
+                //Label für jede Halterung hinzufügen
                 label = document.createElement("label");
                 label.id = "label" + i;
                 label.htmlFor = radioB.id;
@@ -83,7 +83,7 @@ var Aufgabe11;
                 checkB.value = "check";
                 checkB.id = "check" + i;
                 schmuckartikel.appendChild(checkB);
-                //Label f�r jeden Schmuckartikel hinzuf�gen
+                //Label für jeden Schmuckartikel hinzufügen
                 var label2 = document.createElement("label");
                 label2.id = "label2." + i;
                 label2.htmlFor = checkB.id;
@@ -108,28 +108,28 @@ var Aufgabe11;
         name.type = "text";
         name.name = "Name";
         name.placeholder = "Name";
-        name.pattern = "[a-zA-Z]{1,}";
+        name.pattern = "[a-zA-ZßÄÜÖäüö]{1,}";
         name.required = true;
         daten.appendChild(name);
         vorname = document.createElement("input");
         vorname.type = "text";
         vorname.name = "Vorname";
         vorname.placeholder = "Vorame";
-        vorname.pattern = "[a-zA-Z]{1,}";
+        vorname.pattern = "[a-zA-ZßäüöÄÜÖ]{1,}";
         vorname.required = true;
         daten.appendChild(vorname);
         strasse = document.createElement("input");
         strasse.type = "text";
         strasse.name = "Strasse";
-        strasse.placeholder = "Stra�e";
-        strasse.pattern = "[a-zA-Z]{1,}";
+        strasse.placeholder = "Straße";
+        strasse.pattern = "[a-zA-ZßäüöÄÜÖ]{1,}";
         strasse.required = true;
         daten.appendChild(strasse);
         hausNr = document.createElement("input");
         hausNr.type = "text";
         hausNr.name = "Hausnummer";
         hausNr.placeholder = "Hausnummer";
-        hausNr.pattern = "[0-9]{1,}";
+        hausNr.pattern = "[0-9abc]{1,}";
         hausNr.required = true;
         daten.appendChild(hausNr);
         plz = document.createElement("input");
@@ -143,7 +143,7 @@ var Aufgabe11;
         ort.type = "text";
         ort.name = "Ort";
         ort.placeholder = "Ort";
-        ort.pattern = "[a-zA-Z]{1,}";
+        ort.pattern = "[a-zA-ZßÄÜÖäüö]{1,}";
         ort.required = true;
         daten.appendChild(ort);
         mail = document.createElement("input");
@@ -162,7 +162,7 @@ var Aufgabe11;
                 radioB2.value = Aufgabe11.posten[i].name;
                 radioB2.id = "radio2." + i;
                 lieferopt.appendChild(radioB2);
-                //Labels hinzuf�gen
+                //Labels hinzufügen
                 var label3 = document.createElement("label");
                 label3.id = "label3." + i;
                 label3.htmlFor = radioB2.id;
@@ -174,7 +174,7 @@ var Aufgabe11;
         let button = document.getElementById("button");
         let submit = document.createElement("button");
         submit.type = "submit";
-        submit.innerText = "Bestellung �berpr�fen";
+        submit.innerText = "Bestellung überprüfen";
         submit.addEventListener("mousedown", handleMouseDown);
         button.appendChild(submit);
     }
@@ -184,7 +184,7 @@ var Aufgabe11;
         let stepper = []; //Stepper-Elemente zwischenspeichern
         let checkBoxes = []; //Checkbox-Elemente zwischenspeichern
         let gesamtpreis = 0;
-        //Auswahl �berpr�fen
+        //Auswahl überprüfen
         for (let i = 0; i < Aufgabe11.posten.length; i++) {
             console.log(_event.target);
             if (Aufgabe11.posten[i].art == "Schmuck") {
@@ -217,30 +217,30 @@ var Aufgabe11;
         korb.style.height = "auto";
         korb.style.backgroundColor = "#b6cf8f";
         korb.innerHTML = "<span class='wk'>Warenkorb</span><br>";
-        korb.innerHTML += "" + basketBaumart[0] + " " + basketBaumart[1] + "� <br>"; // Warenkorb mit mit Name und Preis füllen
-        korb.innerHTML += "" + basketHalter[0] + " " + basketHalter[1] + "� <br>";
-        korb.innerHTML += "" + basketBeleuchtung[0] + " " + basketBeleuchtung[1] + "� <br>";
-        korb.innerHTML += " " + basketLieferopt[0] + " " + basketLieferopt[1] + "� <br>";
+        korb.innerHTML += "" + basketBaumart[0] + " " + basketBaumart[1] + "€ <br>"; // Warenkorb mit mit Name und Preis füllen
+        korb.innerHTML += "" + basketHalter[0] + " " + basketHalter[1] + "€ <br>";
+        korb.innerHTML += "" + basketBeleuchtung[0] + " " + basketBeleuchtung[1] + "€ <br>";
+        korb.innerHTML += " " + basketLieferopt[0] + " " + basketLieferopt[1] + "€ <br>";
         gesamtpreis = parseFloat(basketBaumart[1]) + parseFloat(basketHalter[1]) + parseFloat(basketLieferopt[1]); //Preise von Baumart, Halter und Lieferoption von String in Fließkommazahl
         for (let i = 0; i < stepper.length; i++) {
             if (checkBoxes[i] != null && checkBoxes[i].checked == true) {
-                gesamtpreis += parseFloat(basketSchmuck[i][1]);
-                korb.innerHTML += "" + basketSchmuck[i][0] + " " + basketSchmuck[i][1] + "� <br>";
+                gesamtpreis += parseFloat(basketSchmuck[i][1]); //...dann wird der Preis vom Schmuck ebenfalls in der Variable gesamtpreis gespeichert
+                korb.innerHTML += "" + basketSchmuck[i][0] + " " + basketSchmuck[i][1] + "€  <br>"; //und der Text im Warenkorb ausgegeben
             }
         }
-        korb.innerHTML += "<hr> Rechnungsbetrag: " + Math.round(gesamtpreis * 100) / 100 + "�";
+        korb.innerHTML += "<hr> Rechnungsbetrag: " + Math.round(gesamtpreis * 100) / 100 + "€";
     }
     //Feedback vom Button
     function handleMouseDown(_event) {
         feedback.innerText = " ";
         feedback.style.paddingBottom = "1em";
         if (name.checkValidity() == false || strasse.checkValidity() == false || hausNr.checkValidity() == false || ort.checkValidity() == false || plz.checkValidity() == false || mail.checkValidity() == false) {
-            feedback.innerText = "Bitte �berpr�fe die Angaben deiner Bestellung.";
+            feedback.innerText = "Bitte überprüfe die Angaben deiner Bestellung.";
             feedback.style.color = "#e35252";
             document.body.appendChild(feedback);
         }
         else {
-            feedback.innerText = "Vielen Dank f�r deine Bestellung!";
+            feedback.innerText = "Vielen Dank für deine Bestellung!";
             feedback.style.color = "#b6cf8f";
             document.body.appendChild(feedback);
         }
