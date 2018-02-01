@@ -18,8 +18,8 @@ namespace A05 {
         }
         
         
-        move(): void{
-            if(this.x > 800){
+        move(): void {
+            if (this.x > 800) {
                 this.x = 0;
                 }
             this.x += Math.random() * 2;
@@ -27,7 +27,7 @@ namespace A05 {
             }
  
         
-        draw(): void{
+        draw(): void {
              crc2.beginPath();
             crc2.arc(this.x, this.y, 20, 0, 2 * Math.PI);
             crc2.fillStyle = "#ffffff";
@@ -49,7 +49,7 @@ namespace A05 {
             crc2.fill();
             }
         
-        update(): void{
+        update(): void {
             this.move();
             this.draw();
             }

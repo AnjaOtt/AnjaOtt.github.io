@@ -221,7 +221,7 @@ var A02;
                 driverX[i] = 800;
                 driverY[i] = 50;
             }
-            driverX[i] -= 3;
+            driverX[i] += 3;
             driverY[i] += 2;
             drawDriver(driverX[i], driverY[i]);
         }

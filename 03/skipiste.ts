@@ -202,19 +202,19 @@ namespace A02 {
     //Funktion zeichne Wolken
     function drawCloud(_x: number, _y: number): void {
         crc2.beginPath();
-        crc2.arc(_x,_y, 20, 0, 2 * Math.PI);
+        crc2.arc(_x, _y, 20, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
         crc2.beginPath();
-        crc2.arc(_x+40, _y, 22, 0, 2 * Math.PI);
+        crc2.arc(_x + 40, _y, 22, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
         crc2.beginPath();
-        crc2.arc(_x+20, _y, 25, 0, 2 * Math.PI);
+        crc2.arc(_x + 20, _y, 25, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
         crc2.beginPath();
-        crc2.arc(_x, _y-20, 20, 0, 2 * Math.PI);
+        crc2.arc(_x, _y - 20, 20, 0, 2 * Math.PI);
         crc2.fillStyle = "#ffffff";
         crc2.fill();
     }
@@ -222,7 +222,7 @@ namespace A02 {
     //Funktion zeichne Skifahrer
     function drawDriver(_x: number, _y: number): void {
        crc2.fillStyle = "#000000";
-        crc2.fillRect(_x, _y, 10, - 23);
+        crc2.fillRect (_x, _y, 10, -23);
         crc2.fillStyle = "#000000";
         crc2.beginPath();
         crc2.arc(_x + 5, _y - 23, 7, 0, 2 * Math.PI);
@@ -266,7 +266,7 @@ namespace A02 {
                 driverX[i] = 800;
                 driverY[i] = 50;
             }
-            driverX[i] -= 3;
+            driverX[i] += 3;
             driverY[i] += 2;
             drawDriver(driverX[i], driverY[i]);
         }
