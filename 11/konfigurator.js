@@ -18,15 +18,13 @@ var Aufgabe11;
     var mail;
     var label;
     //Variablen erstellen und bef�llen
-    var basketBaumart = ["keine Baumart ausgew�hlt", "0"];
+    var basketBaumart = ["keine Baumart ausgew�hlt", "0"]; //Array schon befüllt, aber an späterer Stelle überschrieben
     var basketHalter = ["kein Halter ausgew�hlt", "0"];
     var basketBeleuchtung = ["keine Beleuchtung ausgew�hlt", "0"];
     var basketSchmuck = [];
     var basketLieferopt = ["keine Lieferoption ausgew�hlt", "0"];
     //Button
     let feedback = document.createElement("div");
-    let gesamtpreisB = document.createElement("input");
-    gesamtpreisB.style.display = "none";
     //Die erstellten Elemente werden sp�ter mit Eigenschaften ausgestattet und ans DOM geh�ngt
     function createElements() {
         //Baumart definieren
@@ -182,9 +180,9 @@ var Aufgabe11;
     }
     //Warenkorbfunktion
     function warenkorb(_event) {
-        let target = _event.target;
-        let stepper = [];
-        let checkBoxes = [];
+        let target = _event.target; //Target zwischenspeichern,  casten, um auf die Properties zugreifen zu können
+        let stepper = []; //Stepper-Elemente zwischenspeichern
+        let checkBoxes = []; //Checkbox-Elemente zwischenspeichern
         let gesamtpreis = 0;
         //Auswahl �berpr�fen
         for (let i = 0; i < Aufgabe11.posten.length; i++) {
@@ -194,8 +192,8 @@ var Aufgabe11;
                 checkBoxes[i] = document.getElementById("check" + i);
             }
             if (target.value == Aufgabe11.posten[i].name && target.id == "selectBaumart") {
-                basketBaumart[0] = Aufgabe11.posten[i].name;
-                basketBaumart[1] = "" + Aufgabe11.posten[i].preis;
+                basketBaumart[0] = Aufgabe11.posten[i].name; //...wird der Name vom Posten an der Stelle i im Array basketBaumart an erster Stelle gespeichert
+                basketBaumart[1] = "" + Aufgabe11.posten[i].preis; //...wird der Preis vom Posten an der Stelle i im Array an zweiter Stelle gespeichert
             }
             if (target.id == "radio" + i) {
                 basketHalter[0] = Aufgabe11.posten[i].name;
@@ -210,7 +208,7 @@ var Aufgabe11;
                 basketBeleuchtung[1] = "" + Aufgabe11.posten[i].preis;
             }
             if (target.id == "check" + i || target.id == "stepper" + i) {
-                basketSchmuck[i] = [Aufgabe11.posten[i].name, "" + (Aufgabe11.posten[i].preis * parseInt(stepper[i].value))];
+                basketSchmuck[i] = [Aufgabe11.posten[i].name, "" + (Aufgabe11.posten[i].preis * parseInt(stepper[i].value))]; //...dann wird der Name des entsprechenden Posten und der Preis, multipliziert mit dem Stepper-Wert, gespeichert.
             }
         }
         //Warenkorb Zusammenfassung
@@ -219,11 +217,11 @@ var Aufgabe11;
         korb.style.height = "auto";
         korb.style.backgroundColor = "#b6cf8f";
         korb.innerHTML = "<span class='wk'>Warenkorb</span><br>";
-        korb.innerHTML += "" + basketBaumart[0] + " " + basketBaumart[1] + "� <br>";
+        korb.innerHTML += "" + basketBaumart[0] + " " + basketBaumart[1] + "� <br>"; // Warenkorb mit mit Name und Preis füllen
         korb.innerHTML += "" + basketHalter[0] + " " + basketHalter[1] + "� <br>";
         korb.innerHTML += "" + basketBeleuchtung[0] + " " + basketBeleuchtung[1] + "� <br>";
         korb.innerHTML += " " + basketLieferopt[0] + " " + basketLieferopt[1] + "� <br>";
-        gesamtpreis = parseFloat(basketBaumart[1]) + parseFloat(basketHalter[1]) + parseFloat(basketLieferopt[1]);
+        gesamtpreis = parseFloat(basketBaumart[1]) + parseFloat(basketHalter[1]) + parseFloat(basketLieferopt[1]); //Preise von Baumart, Halter und Lieferoption von String in Fließkommazahl
         for (let i = 0; i < stepper.length; i++) {
             if (checkBoxes[i] != null && checkBoxes[i].checked == true) {
                 gesamtpreis += parseFloat(basketSchmuck[i][1]);

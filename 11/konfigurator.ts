@@ -9,7 +9,7 @@ namespace Aufgabe11 {
     window.addEventListener("load", createElements);
     window.addEventListener("change", warenkorb);
 
-    //Persönliche Angaben/Texteingabefelder erstellen 
+    //Persï¿½nliche Angaben/Texteingabefelder erstellen 
   
     var name: HTMLInputElement;
     var vorname: HTMLInputElement;
@@ -20,22 +20,20 @@ namespace Aufgabe11 {
     var mail: HTMLInputElement;
     var label: HTMLLabelElement;
 
-    //Variablen erstellen und befüllen
+    //Variablen erstellen und befï¿½llen
     
-    var basketBaumart: string[] = ["keine Baumart ausgewählt", "0"];
-    var basketHalter: string[] = ["kein Halter ausgewählt", "0"];
-    var basketBeleuchtung: string[] = ["keine Beleuchtung ausgewählt", "0"];
+    var basketBaumart: string[] = ["keine Baumart ausgewï¿½hlt", "0"]; //Array schon befÃ¼llt, aber an spÃ¤terer Stelle Ã¼berschrieben
+    var basketHalter: string[] = ["kein Halter ausgewï¿½hlt", "0"];
+    var basketBeleuchtung: string[] = ["keine Beleuchtung ausgewï¿½hlt", "0"];
     var basketSchmuck: string[][] = [];
-    var basketLieferopt: string[] = ["keine Lieferoption ausgewählt", "0"];
+    var basketLieferopt: string[] = ["keine Lieferoption ausgewï¿½hlt", "0"];
     
     //Button
     let feedback: HTMLDivElement = document.createElement("div");
     
-    let gesamtpreisB: HTMLInputElement = document.createElement("input");
-    gesamtpreisB.style.display = "none";
+    
 
-
-    //Die erstellten Elemente werden später mit Eigenschaften ausgestattet und ans DOM gehängt
+    //Die erstellten Elemente werden spï¿½ter mit Eigenschaften ausgestattet und ans DOM gehï¿½ngt
     
     function createElements(): void {
         
@@ -68,7 +66,7 @@ namespace Aufgabe11 {
                 radioB.id = "radio" + i;
                 halterung.appendChild(radioB);
                 
-                //Label für jede Halterung hinzufügen
+                //Label fï¿½r jede Halterung hinzufï¿½gen
                 label = document.createElement("label");
                 label.id = "label" + i;
                 label.htmlFor = radioB.id;
@@ -106,7 +104,7 @@ namespace Aufgabe11 {
                 checkB.id = "check" + i;
                 schmuckartikel.appendChild(checkB);
                    
-                //Label für jeden Schmuckartikel hinzufügen
+                //Label fï¿½r jeden Schmuckartikel hinzufï¿½gen
                 var label2: HTMLLabelElement = document.createElement("label");
                 label2.id = "label2." + i;
                 label2.htmlFor = checkB.id;
@@ -149,7 +147,7 @@ namespace Aufgabe11 {
         strasse = document.createElement("input");
         strasse.type = "text";
         strasse.name = "Strasse";
-        strasse.placeholder = "Straße";
+        strasse.placeholder = "Straï¿½e";
         strasse.pattern = "[a-zA-Z]{1,}";
         strasse.required = true;
         daten.appendChild(strasse);
@@ -199,7 +197,7 @@ namespace Aufgabe11 {
                 radioB2.id = "radio2." + i;
                 lieferopt.appendChild(radioB2);
                 
-                //Labels hinzufügen
+                //Labels hinzufï¿½gen
                 var label3: HTMLLabelElement = document.createElement("label");
                 label3.id = "label3." + i;
                 label3.htmlFor = radioB2.id;
@@ -214,7 +212,7 @@ namespace Aufgabe11 {
         let submit: HTMLButtonElement = document.createElement("button");
         
         submit.type = "submit";
-        submit.innerText = "Bestellung überprüfen";
+        submit.innerText = "Bestellung ï¿½berprï¿½fen";
         submit.addEventListener("mousedown", handleMouseDown);
         button.appendChild(submit);
     }
@@ -222,22 +220,22 @@ namespace Aufgabe11 {
     //Warenkorbfunktion
     
     function warenkorb(_event: Event): void {
-        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        let stepper: HTMLInputElement[] = [];
-        let checkBoxes: HTMLInputElement[] = [];
+        let target: HTMLInputElement = <HTMLInputElement>_event.target; //Target zwischenspeichern,  casten, um auf die Properties zugreifen zu kÃ¶nnen
+        let stepper: HTMLInputElement[] = []; //Stepper-Elemente zwischenspeichern
+        let checkBoxes: HTMLInputElement[] = []; //Checkbox-Elemente zwischenspeichern
         let gesamtpreis: number = 0;
         
-        //Auswahl überprüfen
+        //Auswahl ï¿½berprï¿½fen
         
         for (let i: number = 0; i < posten.length; i++) {
             console.log(_event.target);
-            if (posten[i].art == "Schmuck") {
+            if (posten[i].art == "Schmuck") { //Wenn die Art Schmuck ist, werden Stepper und Checkbox Elemente in Arrays zwischengespeichert ( benÃ¶tigt, um abzufragen ob Checkbox gecheckt ist)
                 stepper[i] = <HTMLInputElement>document.getElementById("stepper" + i);
                 checkBoxes[i] = <HTMLInputElement>document.getElementById("check" + i);
             }
-            if (target.value == posten[i].name && target.id == "selectBaumart") {
-                basketBaumart[0] = posten[i].name;
-                basketBaumart[1] = "" + posten[i].preis;
+            if (target.value == posten[i].name && target.id == "selectBaumart") { //Wenn der Name und die Id vom geÃ¤nderten Element selectBaumart ist,
+                basketBaumart[0] = posten[i].name;  //...wird der Name vom Posten an der Stelle i im Array basketBaumart an erster Stelle gespeichert
+                basketBaumart[1] = "" + posten[i].preis; //...wird der Preis vom Posten an der Stelle i im Array an zweiter Stelle gespeichert
             }
             if (target.id == "radio" + i) {
                 basketHalter[0] = posten[i].name;
@@ -254,32 +252,32 @@ namespace Aufgabe11 {
                 basketBeleuchtung[1] = "" + posten[i].preis;
 
             }
-            if (target.id == "check" + i || target.id == "stepper" + i) {
-                basketSchmuck[i] = [posten[i].name, "" + (posten[i].preis * parseInt(stepper[i].value))];
+            if (target.id == "check" + i || target.id == "stepper" + i) { //Wenn sich was an den Elementen mit Id check oder stepper geÃ¤ndert hat,
+                basketSchmuck[i] = [posten[i].name, "" + (posten[i].preis * parseInt(stepper[i].value))]; //...dann wird der Name des entsprechenden Posten und der Preis, multipliziert mit dem Stepper-Wert, gespeichert.
 
             }
            
         }
         //Warenkorb Zusammenfassung
         
-        let korb: HTMLDivElement = <HTMLDivElement>document.getElementById("zusammenfassung");
+        let korb: HTMLDivElement = <HTMLDivElement>document.getElementById("zusammenfassung"); 
         korb.style.width = "30%";
         korb.style.height = "auto";
         korb.style.backgroundColor = "#b6cf8f";
         korb.innerHTML = "<span class='wk'>Warenkorb</span><br>";
-        korb.innerHTML += "" + basketBaumart[0] + " " + basketBaumart[1] + "€ <br>";
-        korb.innerHTML += "" + basketHalter[0] + " " + basketHalter[1] + "€ <br>";
-        korb.innerHTML += "" + basketBeleuchtung[0] + " " + basketBeleuchtung[1] + "€ <br>";
-        korb.innerHTML += " " + basketLieferopt[0] + " " + basketLieferopt[1] + "€ <br>";
+        korb.innerHTML += "" + basketBaumart[0] + " " + basketBaumart[1] + "ï¿½ <br>"; // Warenkorb mit mit Name und Preis fÃ¼llen
+        korb.innerHTML += "" + basketHalter[0] + " " + basketHalter[1] + "ï¿½ <br>";
+        korb.innerHTML += "" + basketBeleuchtung[0] + " " + basketBeleuchtung[1] + "ï¿½ <br>";
+        korb.innerHTML += " " + basketLieferopt[0] + " " + basketLieferopt[1] + "ï¿½ <br>";
 
-        gesamtpreis = parseFloat(basketBaumart[1]) + parseFloat(basketHalter[1]) + parseFloat(basketLieferopt[1]);
+        gesamtpreis = parseFloat(basketBaumart[1]) + parseFloat(basketHalter[1]) + parseFloat(basketLieferopt[1]); //Preise von Baumart, Halter und Lieferoption von String in FlieÃŸkommazahl
         for (let i: number = 0; i < stepper.length; i++) {
-            if (checkBoxes[i] != null && checkBoxes[i].checked == true) {
+            if (checkBoxes[i] != null && checkBoxes[i].checked == true) { 
                 gesamtpreis += parseFloat(basketSchmuck[i][1]);
-                korb.innerHTML += "" + basketSchmuck[i][0] + " " + basketSchmuck[i][1] + "€ <br>";
+                korb.innerHTML += "" + basketSchmuck[i][0] + " " + basketSchmuck[i][1] + "ï¿½ <br>";
             }
         }
-        korb.innerHTML += "<hr> Rechnungsbetrag: " + Math.round(gesamtpreis * 100) / 100 + "€";
+        korb.innerHTML += "<hr> Rechnungsbetrag: " + Math.round(gesamtpreis * 100) / 100 + "ï¿½";
         
     }
 
@@ -289,12 +287,12 @@ namespace Aufgabe11 {
         feedback.innerText = " ";
         feedback.style.paddingBottom = "1em";
         if (name.checkValidity() == false || strasse.checkValidity() == false || hausNr.checkValidity() == false || ort.checkValidity() == false || plz.checkValidity() == false || mail.checkValidity() == false) {
-            feedback.innerText = "Bitte überprüfe die Angaben deiner Bestellung.";
+            feedback.innerText = "Bitte ï¿½berprï¿½fe die Angaben deiner Bestellung.";
             feedback.style.color = "#e35252";
             document.body.appendChild(feedback);
         }
         else {
-            feedback.innerText = "Vielen Dank für deine Bestellung!";
+            feedback.innerText = "Vielen Dank fï¿½r deine Bestellung!";
             feedback.style.color = "#b6cf8f";
             document.body.appendChild(feedback);
         }
