@@ -280,8 +280,7 @@ namespace Aufgabe11 {
             }
         }
         korb.innerHTML += "<hr> Rechnungsbetrag: " + Math.round(gesamtpreis * 100) / 100 + "€";
-        gesamtpreisB.name = "Gesamtpreis: " + Math.round(gesamtpreis * 100) / 100 + " Euro";
-        korb.appendChild(gesamtpreisB);
+        
     }
 
     //Feedback vom Button
