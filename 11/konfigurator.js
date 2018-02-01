@@ -8,7 +8,7 @@ var Aufgabe11;
 (function (Aufgabe11) {
     window.addEventListener("load", createElements);
     window.addEventListener("change", warenkorb);
-    //Pers�nliche Angaben/Texteingabefelder erstellen 
+    //Persönliche Angaben/Texteingabefelder erstellen 
     var name;
     var vorname;
     var strasse;
@@ -25,7 +25,7 @@ var Aufgabe11;
     var basketLieferopt = ["keine Lieferoption ausgewählt", "0"];
     //Button
     let feedback = document.createElement("div");
-    //Die erstellten Elemente werden später mit Eigenschaften ausgestattet und ans DOM geh�ngt
+    //Die erstellten Elemente werden später mit Eigenschaften ausgestattet und ans DOM gehängt
     function createElements() {
         //Baumart definieren
         let baumart = document.getElementById("baumart");

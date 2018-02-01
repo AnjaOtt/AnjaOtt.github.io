@@ -9,7 +9,7 @@ namespace Aufgabe11 {
     window.addEventListener("load", createElements);
     window.addEventListener("change", warenkorb);
 
-    //Pers�nliche Angaben/Texteingabefelder erstellen 
+    //Persönliche Angaben/Texteingabefelder erstellen 
   
     var name: HTMLInputElement;
     var vorname: HTMLInputElement;
@@ -33,7 +33,7 @@ namespace Aufgabe11 {
     
     
 
-    //Die erstellten Elemente werden später mit Eigenschaften ausgestattet und ans DOM geh�ngt
+    //Die erstellten Elemente werden später mit Eigenschaften ausgestattet und ans DOM gehängt
     
     function createElements(): void {
         
