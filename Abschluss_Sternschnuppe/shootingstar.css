@@ -1,0 +1,32 @@
+/*
+Aufgabe: Abschlussarbeit
+Name: Anja Ott
+Matrikel: 256342
+Datum: 23.02.18
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+h1 {
+	font-family: 'Rouge Script', cursive;
+	font-size: 40px;
+	margin: 0.3em;
+}
+
+button {
+	background-color: #80002A;
+	border: none;
+	color: white;
+	padding: 0.5em 1em;
+	text-align: center;
+	font-size: 1em;
+	margin: 4px 2px;
+	opacity: 0.6;
+	transition: 0.3s;
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+button:hover {
+	opacity: 1
+}

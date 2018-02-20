@@ -1,0 +1,122 @@
+/*
+Aufgabe: Abschlussarbeit
+Name: Anja Ott
+Matrikel: 256342
+Datum: 23.02.18
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+*/
+
+h1 {
+	font-family: 'Rouge Script', cursive;
+	font-size: 40px;
+	margin: 0.3em;
+}
+
+.alert {
+	padding: 0.7em;
+	background-color: #80002A;
+	color: white;
+	margin-bottom: 0.3em;
+	margin-right: 0.2em;
+}
+
+.closebtn {
+	margin-left: 14px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 25px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
+}
+
+canvas {
+	width: 1500;
+	height: 600;
+}
+
+button {
+	position: fixed;
+	padding: none;
+	cursor: pointer;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	overflow: hidden;
+	z-index: 10000;
+}
+
+#moon {
+	margin-top: 6em;
+	margin-left: 84em;
+	width: 160px;
+	height: 140px;
+}
+
+#bigstar {
+	margin-top: 5.5em;
+	margin-left: 9em;
+	width: 60px;
+	height: 60px;
+}
+
+#tent {
+	margin-top: 30em;
+	margin-left: 17em;
+	width: 250px;
+	height: 100px;
+}
+
+#star1 {
+	margin-top: 10.5em;
+	margin-left: 25em;
+	width: 30px;
+	height: 20px;
+}
+
+#star2 {
+	margin-top: 12em;
+	margin-left: 35em;
+	width: 30px;
+	height: 20px;
+}
+
+#star3 {
+	margin-top: 15em;
+	margin-left: 39.5em;
+	width: 30px;
+	height: 20px;
+}
+
+#star4 {
+	margin-top: 18.5em;
+	margin-left: 45.5em;
+	width: 30px;
+	height: 20px;
+}
+
+#star5 {
+	margin-top: 21em;
+	margin-left: 57.5em;
+	width: 30px;
+	height: 20px;
+}
+
+#star6 {
+	margin-top: 26.5em;
+	margin-left: 53em;
+	width: 30px;
+	height: 20px;
+}
+
+#star7 {
+	margin-top: 25em;
+	margin-left: 44.5em;
+	width: 30px;
+	height: 20px;
+}

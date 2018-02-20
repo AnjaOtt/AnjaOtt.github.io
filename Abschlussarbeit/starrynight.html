@@ -1,0 +1,60 @@
+<!--
+Aufgabe: Abschlussarbeit
+Name: Anja Ott
+Matrikel: 256342
+Datum: 23.02.18
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+-->
+
+<!doctype html>
+<html>
+<head>
+<title>StarryNight</title>
+<meta charset="utf-8">
+
+<link rel="stylesheet" type="text/css" href="starrynight.css">
+<style>
+@import url('https://fonts.googleapis.com/css?family=Rouge+Script');
+</style>
+
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="moon.js"></script>
+<script type="text/javascript" src="tent.js"></script>
+<script type="text/javascript" src="smallStar.js"></script>
+<script type="text/javascript" src="bigStar.js"></script>
+</head>
+<body>
+	<h1>StarryNight</h1>
+
+	<div class="alert">
+		<span class="closebtn"
+			onclick="this.parentElement.style.display='none';">&times;</span> <strong>What
+			a wonderful Night!</strong> Click at the stars, the moon and the tent and see
+		what happens.
+	</div>
+
+	<audio id="lullaby">
+		<source src="Schlaflied.wav" type="audio/wav">
+	</audio>
+
+	<script>
+		var lullaby = document.getElementById("lullaby");
+		function playAudio() {
+			lullaby.play();
+		}
+	</script>
+
+	<button id="moon" onclick="playAudio()" type="button"></button>
+	<button id="bigstar" type="button"></button>
+	<button id="tent" type="button"></button>
+
+	<button id="star1" type="button"></button>
+	<button id="star2" type="button"></button>
+	<button id="star3" type="button"></button>
+	<button id="star4" type="button"></button>
+	<button id="star5" type="button"></button>
+	<button id="star6" type="button"></button>
+	<button id="star7" type="button"></button>
+
+	<canvas width="1500" height="600"></canvas>
+</html>
