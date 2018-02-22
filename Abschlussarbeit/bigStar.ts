@@ -8,14 +8,11 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 namespace starryNight {
 
-    export class BigStar {
-        x: number;
-        y: number;
+    export class BigStar extends CanvasObjects {
+        
 
         constructor(_x: number, _y: number) {
-            console.log("constructor test");
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y);
 
         }
         

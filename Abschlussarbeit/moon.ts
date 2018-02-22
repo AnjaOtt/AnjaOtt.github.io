@@ -8,13 +8,11 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 namespace starryNight {
 
-    export class Moon {
-        x: number;
-        y: number;
+    export class Moon extends CanvasObjects {
+       
 
         constructor(_x: number, _y: number) {
-            this.x = _x;
-            this.y = _y;
+            super (_x, _y);
         }
 
         //Mond

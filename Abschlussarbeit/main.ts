@@ -187,7 +187,7 @@ namespace starryNight {
         drawTentlight(250, 400);
 
     }
-
+    
     // Funktion: Event, Sternbild erscheint
     function addConstellation(_event: MouseEvent): void {
         drawStarConstellation(350, 150);

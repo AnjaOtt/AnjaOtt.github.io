@@ -7,11 +7,9 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 var starryNight;
 (function (starryNight) {
-    class BigStar {
+    class BigStar extends starryNight.CanvasObjects {
         constructor(_x, _y) {
-            console.log("constructor test");
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y);
         }
         drawBigStar(_x, _y) {
             starryNight.crc2.beginPath();

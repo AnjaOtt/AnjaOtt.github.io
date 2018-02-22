@@ -7,10 +7,9 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 var starryNight;
 (function (starryNight) {
-    class Tent {
+    class Tent extends starryNight.CanvasObjects {
         constructor(_x, _y) {
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y);
         }
         //Zelt
         drawTent(_x, _y) {

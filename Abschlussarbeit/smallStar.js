@@ -7,10 +7,9 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 var starryNight;
 (function (starryNight) {
-    class SmallStar {
+    class SmallStar extends starryNight.CanvasObjects {
         constructor(_x, _y, size) {
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y);
             this.size = size;
         }
         // Funktion zeichne kleine Sterne

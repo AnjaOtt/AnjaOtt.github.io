@@ -8,14 +8,12 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 namespace starryNight {
 
-    export class SmallStar {
-        x: number;
-        y: number;
+    export class SmallStar extends CanvasObjects {
+        
         size: number;
 
         constructor(_x: number, _y: number, size: number) {
-            this.x = _x;
-            this.y = _y;
+            super (_x, _y);
             this.size = size;
         }
         
