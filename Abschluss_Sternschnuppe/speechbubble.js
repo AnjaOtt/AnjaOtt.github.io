@@ -7,11 +7,9 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 var ShootingStar;
 (function (ShootingStar) {
-    class Speechbubble {
+    class Speechbubble extends ShootingStar.CanvasObjects {
         constructor(_x, _y) {
-            console.log("constructor test");
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y);
         }
         drawBubble(_x, _y) {
             ShootingStar.crc2.beginPath();

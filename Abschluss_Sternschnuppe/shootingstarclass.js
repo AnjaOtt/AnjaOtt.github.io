@@ -7,13 +7,10 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 */
 var ShootingStar;
 (function (ShootingStar) {
-    class Shootingstar {
+    class Shootingstar extends ShootingStar.CanvasObjects {
         constructor(_x, _y) {
-            console.log("constructor test");
-            this.setBeginningPosition();
+            super(_x, _y);
             this.setPosition();
-            this.x = _x;
-            this.y = _y;
             this.speed = 0.03;
         }
         update() {
@@ -72,10 +69,6 @@ var ShootingStar;
         setPosition() {
             this.xPosition = 1000;
             this.yPosition = 700;
-        }
-        setBeginningPosition() {
-            this.x = 500;
-            this.y = 200;
         }
     }
     ShootingStar.Shootingstar = Shootingstar;

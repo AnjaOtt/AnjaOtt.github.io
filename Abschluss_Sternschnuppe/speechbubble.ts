@@ -8,14 +8,11 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 namespace ShootingStar {
 
-    export class Speechbubble {
-        x: number;
-        y: number;
+    export class Speechbubble extends CanvasObjects {
+        
 
         constructor(_x: number, _y: number) {
-            console.log("constructor test");
-            this.x = _x;
-            this.y = _y;
+            super(_x, _y);
         }
 
         drawBubble(_x: number, _y: number): void {

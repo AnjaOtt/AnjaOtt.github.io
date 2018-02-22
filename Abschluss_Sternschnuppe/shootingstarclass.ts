@@ -8,20 +8,16 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 namespace ShootingStar {
 
-    export class Shootingstar {
-        x: number;
-        y: number;
+    export class Shootingstar extends CanvasObjects {
+        
         xPosition: number;
         yPosition: number;
         speed: number;
 
 
         constructor(_x: number, _y: number) {
-            console.log("constructor test");
-            this.setBeginningPosition();
+            super (_x, _y);
             this.setPosition();
-            this.x = _x;
-            this.y = _y;
             this.speed = 0.03;
         }
 
@@ -92,10 +88,5 @@ namespace ShootingStar {
             this.yPosition = 700;
         }
 
-
-        setBeginningPosition(): void {
-            this.x = 500;
-            this.y = 200;
-        }
     }
 }
