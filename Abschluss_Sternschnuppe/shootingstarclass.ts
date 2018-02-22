@@ -82,6 +82,7 @@ namespace ShootingStar {
             crc2.fill();
 
         }
+        
         setPosition(): void {
 
             this.xPosition = 1000;
